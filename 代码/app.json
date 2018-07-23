@@ -22,7 +22,8 @@
     "pages/application/personInfo",
     "pages/application/standardInfo",
     "pages/manger/companyFilter",
-    "pages/application/companyInfoDetail"
+    "pages/application/companyInfoDetail",
+    "pages/danger/addDanger4JJ"
   ],
   "window": {
     "backgroundTextStyle": "light",

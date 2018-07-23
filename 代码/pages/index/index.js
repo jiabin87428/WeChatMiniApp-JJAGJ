@@ -41,6 +41,9 @@ Page({
     qyyzgyh: 0,
     // 企业未整改隐患
     qywzgyh: 0,
+
+    //------------纪杰-----------------
+    userType: 3
   },
   onLoad: function (e) {
     var that = this;
