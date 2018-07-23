@@ -1,5 +1,9 @@
 <!--index.wxml-->
 <view class='baseView' wx:if="{{userType == 2}}">
+纪杰首页
+</view>
+
+<view class='baseView' wx:else>
   <view class="subBaseView3" wx:if="{{isqy == true}}">
     <view class='scrollItem'>
       <image class="point" src="../../assets/point_green.png" mode="aspectFit"></image>
@@ -45,8 +49,4 @@
     </map>
   </view>
   <text class='location'>{{currentLocation}}</text>
-</view>
-
-<view class='baseView' wx:if="{{userType == 3}}">
-纪杰首页
 </view>

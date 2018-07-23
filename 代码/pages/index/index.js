@@ -43,7 +43,7 @@ Page({
     qywzgyh: 0,
 
     //------------纪杰-----------------
-    userType: 3
+    userType: 2
   },
   onLoad: function (e) {
     var that = this;
@@ -130,6 +130,10 @@ Page({
             height: 30,
             callout: callout
           }]
+          // 设置用户类型
+          that.setData({
+            userType: app.globalData.userInfo.yhlx
+          })
           if (app.globalData.userInfo.repIsqy == 'false') {
             that.setData({
               longitude: app.globalData.userInfo.mapx,
