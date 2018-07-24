@@ -23,7 +23,8 @@
     "pages/application/standardInfo",
     "pages/manger/companyFilter",
     "pages/application/companyInfoDetail",
-    "pages/danger/addDanger4JJ"
+    "pages/danger/addDanger4JJ",
+    "pages/jijie/companyData"
   ],
   "window": {
     "backgroundTextStyle": "light",

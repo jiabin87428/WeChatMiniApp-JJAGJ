@@ -302,4 +302,11 @@ Page({
       url: '../danger/dangerDetail?yhid=' + dangerId + '&sfyzg=' + sfyzg
     })
   },
+  /**纪杰**/
+  // 企业管理数据统计
+  getCompanyData: function () {
+    wx.navigateTo({
+      url: '../jijie/companyData'
+    })
+  },
 })    
