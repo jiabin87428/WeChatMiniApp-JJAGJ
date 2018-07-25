@@ -10,6 +10,8 @@ Page({
   data: {
     // 是否企业用户
     isqy: 'false',
+    // 用户类型
+    yhlx: 0,
     // 企业ID
     qyid: '',
     // 用户头像链接
@@ -139,7 +141,34 @@ Page({
       key: 'userInfo',
       success: function (res) {
         app.globalData.userInfo = res.data
-        if (app.globalData.userInfo.repIsqy == 'false') {
+        that.setData({
+          yhlx: app.globalData.userInfo.yhlx
+        })
+        if (app.globalData.userInfo.yhlx == 0) {// 企业用户
+          that.setData({
+            isqy: 'true',
+            qyid: app.globalData.userInfo.repRecordid,
+            logo: config.logoImg + app.globalData.userInfo.repRecordid,
+            roleName: '企业用户',
+            showCompanyName: app.globalData.userInfo.repName,
+            showCompanyPlace: app.globalData.userInfo.companyLocal,
+            showCompanyType: app.globalData.userInfo.companyType,
+            showContact: app.globalData.userInfo.inChargePerson,
+            showPhone: app.globalData.userInfo.mobile,
+            showEmail: app.globalData.userInfo.email,
+            showAddress: app.globalData.userInfo.address,
+            longitude: app.globalData.userInfo.mapx,
+            latitude: app.globalData.userInfo.mapy,
+
+            name: '',
+            sex: '',
+            job: '',
+            dep: '',
+            mobile: '',
+            email: ''
+
+          })
+        } else {// 监管用户
           that.setData({
             isqy: 'false',
             roleName: '监管用户',
@@ -166,29 +195,6 @@ Page({
             email: app.globalData.userInfo.email == null ? '' : app.globalData.userInfo.email,
             longitude: app.globalData.userInfo.mapx,
             latitude: app.globalData.userInfo.mapy,
-          })
-        } else {
-          that.setData({
-            isqy: 'true',
-            qyid: app.globalData.userInfo.repRecordid,
-            logo: config.logoImg + app.globalData.userInfo.repRecordid,
-            roleName: '企业用户',
-            showCompanyName: app.globalData.userInfo.repName,
-            showCompanyPlace: app.globalData.userInfo.companyLocal,
-            showCompanyType: app.globalData.userInfo.companyType,
-            showContact: app.globalData.userInfo.inChargePerson,
-            showPhone: app.globalData.userInfo.mobile,
-            showEmail: app.globalData.userInfo.email,
-            showAddress: app.globalData.userInfo.address,
-            longitude: app.globalData.userInfo.mapx,
-            latitude: app.globalData.userInfo.mapy,
-
-            name: '',
-            sex: '',
-            job: '',
-            dep: '',
-            mobile: '',
-            email: ''
           })
         }
         console.log(app.globalData.userInfo)
