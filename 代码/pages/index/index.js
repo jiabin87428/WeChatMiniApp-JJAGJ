@@ -43,7 +43,7 @@ Page({
     qywzgyh: 0,
 
     //------------纪杰-----------------
-    userType: 2
+    yhlx: 2
   },
   onLoad: function (e) {
     var that = this;
@@ -132,7 +132,7 @@ Page({
           }]
           // 设置用户类型
           that.setData({
-            userType: app.globalData.userInfo.yhlx
+            yhlx: app.globalData.userInfo.yhlx
           })
           if (app.globalData.userInfo.repIsqy == 'false') {
             that.setData({

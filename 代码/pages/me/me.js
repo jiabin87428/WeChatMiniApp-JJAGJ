@@ -143,6 +143,7 @@ Page({
         app.globalData.userInfo = res.data
         that.setData({
           yhlx: app.globalData.userInfo.yhlx
+          // yhlx: 4
         })
         if (app.globalData.userInfo.yhlx == 0) {// 企业用户
           that.setData({

@@ -11,6 +11,7 @@ App({
     })
   },
   // 判断是否登录
+  // 用户权限：0企业、1监管、2检查、3管理者、4政府
   checkLogin: function () {
     var that = this
     wx.getStorage({

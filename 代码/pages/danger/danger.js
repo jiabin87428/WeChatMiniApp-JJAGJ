@@ -10,6 +10,8 @@ Page({
     winHeight: 0,
     // 是否企业用户
     isqy: true,
+    // 用户类型
+    yhlx: 0,
     // tab切换    
     currentTab: 0,
     //用户名
@@ -93,6 +95,10 @@ Page({
       key: 'userInfo',
       success: function (res) {
         app.globalData.userInfo = res.data
+        that.setData({
+          yhlx: app.globalData.userInfo.yhlx
+          // yhlx: 4
+        })
         if (app.globalData.userInfo.repIsqy == 'false') {
           that.setData({
             addDangerTitle: "隐患督察",

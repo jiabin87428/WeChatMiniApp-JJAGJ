@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <!--首页-用户类型为检查人员-->
-<view class='baseView' wx:if="{{userType == 2}}">
+<view class='baseView' wx:if="{{yhlx == 3 || yhlx == 4}}">
   <scroll-view scroll-y="true" class='scrollView'>
     <view id='companyName' class='scrollItem' bindtap='jumpRadio'>
       <text class='JJ_cellText1'>区-街道</text>
@@ -39,6 +39,12 @@
     </view>
   </scroll-view>
 </view>
+
+<!--检查人首页-->
+<view class='baseView' wx:elif="{{yhlx == 2}}">
+检查人首页
+</view>
+
 <!--默认首页-->
 <view class='baseView' wx:else>
   <view class="subBaseView3" wx:if="{{isqy == true}}">

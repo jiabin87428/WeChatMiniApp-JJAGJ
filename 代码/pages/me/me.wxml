@@ -80,6 +80,56 @@
       </view>
     </view>
 
+    <!--管理者用户-->
+    <view wx:elif="{{yhlx == 3}}">
+      <view id='companyName' class='scrollItem'>
+        <text class='cellText1'>姓名</text>
+        <text class='cellText2'>{{showCompanyName}}</text>
+      </view>
+      <view id='companyType1' class='scrollItem'>
+        <text class='cellText1'>手机</text>
+        <text class='cellText2'>{{showCompanyType}}</text>
+      </view>
+      <view id='contact' class='scrollItem'>
+        <text class='cellText1'>邮箱</text>
+        <text class='cellText2'>{{showContact}}</text>
+      </view>
+      <view id='contact' class='scrollItem'>
+        <text class='cellText1'>账号管理</text>
+        <text class='cellText2'>{{showContact}}</text>
+        <image class="JJ_arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image>
+      </view>
+      <view id='contact' class='scrollItem'>
+        <text class='cellText1'>项目进度审阅</text>
+        <text class='cellText2'>{{showContact}}</text>
+        <image class="JJ_arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image>
+      </view>
+    </view>
+
+    <!--政府用户-->
+    <view wx:elif="{{yhlx == 4}}">
+      <view id='companyName' class='scrollItem'>
+        <text class='cellText1'>姓名</text>
+        <text class='cellText2'>{{showCompanyName}}</text>
+      </view>
+      <view id='companyType1' class='scrollItem'>
+        <text class='cellText1'>所属部门</text>
+        <text class='cellText2'>{{showCompanyType}}</text>
+      </view>
+      <view id='companyType1' class='scrollItem'>
+        <text class='cellText1'>联系电话</text>
+        <text class='cellText2'>{{showCompanyType}}</text>
+      </view>
+      <view id='companyType1' class='scrollItem'>
+        <text class='cellText1'>手机</text>
+        <text class='cellText2'>{{showCompanyType}}</text>
+      </view>
+      <view id='contact' class='scrollItem'>
+        <text class='cellText1'>邮箱</text>
+        <text class='cellText2'>{{showContact}}</text>
+      </view>
+    </view>
+
     <!--监管用户-->
     <view wx:else>
       <view id='address' class='scrollItem'>

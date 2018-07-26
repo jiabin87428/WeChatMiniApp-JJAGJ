@@ -1,6 +1,6 @@
 <scroll-view scroll-y="true" class='scrollView'>
   <image bindtap="userClick" class="titleImage" src="../../assets/dangerBG.png" mode="widthFix"></image> 
-  <view class="userinfo">
+  <view class="userinfo" wx:if="{{yhlx != 4}}">
     <view class='dangerView' bindtap='addClick'>
       <image class="dangerIcon" src="../../assets/add.png" mode="widthFix"></image>
       <view class='subView'>
