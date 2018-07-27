@@ -24,7 +24,8 @@
     "pages/manger/companyFilter",
     "pages/application/companyInfoDetail",
     "pages/danger/addDanger4JJ",
-    "pages/jijie/companyData"
+    "pages/jijie/companyData",
+    "pages/common/companyList"
   ],
   "window": {
     "backgroundTextStyle": "light",

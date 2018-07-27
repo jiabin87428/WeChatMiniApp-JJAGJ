@@ -35,6 +35,8 @@ Page({
     rectifyType: "",
     // 整改期限
     date: "",
+    // 法律依据
+    law: "",
     // 整改建议
     advise: "",
 
@@ -178,15 +180,12 @@ Page({
     if (viewId == "companyName") {
       placeholder = "请输入企业名称"
       inputstring = this.data.companyName
-    } else if (viewId == "problem") {
-      placeholder = "请输入存在问题"
-      inputstring = this.data.problem
     } else if (viewId == "desc") {
-      placeholder = "请输入问题描述"
+      placeholder = "请输入现场问题"
       inputstring = this.data.desc
-    } else if (viewId == "result") {
-      placeholder = "请输入可能造成的后果"
-      inputstring = this.data.result
+    } else if (viewId == "law") {
+      placeholder = "请输入相关法律依据"
+      inputstring = this.data.law
     } else if (viewId == "advise") {
       placeholder = "请输入整改建议"
       inputstring = this.data.advise
@@ -253,6 +252,7 @@ Page({
       "qyid": app.globalData.userInfo.repRecordid,
       "qymc": companyName,
       "wtms": this.data.desc,
+      "flyj": this.data.law,
       "qzyh": this.data.dangerString,
       "zglx": this.data.rectifyType.name,
       "zgqx": this.data.date,

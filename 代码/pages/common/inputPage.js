@@ -91,6 +91,10 @@ Page({
       prevPage.setData({
         desc: this.data.inputstring
       })
+    } else if (this.data.viewId == "law") {
+      prevPage.setData({
+        law: this.data.inputstring
+      })
     } else if (this.data.viewId == "result") {
       prevPage.setData({
         result: this.data.inputstring

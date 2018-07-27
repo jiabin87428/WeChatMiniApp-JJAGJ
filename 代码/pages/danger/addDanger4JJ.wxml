@@ -5,16 +5,20 @@
     <text class='cellText1'>企业名称</text>
     <text class='mustText'>*</text>
     <text class='cellText2'>{{companyName.name}}</text>
-    <!-- <input class='flex-item input' placeholder="请输入企业名称" placeholder-style='font-size:14px;font-weight: initial;'/> -->
     <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image> 
   </view>
   <view id='desc' class='scrollItem' bindtap='jumpInput'>
-    <text class='cellText1'>隐患描述</text>
+    <text class='cellText1'>现场问题</text>
     <text class='mustText'>*</text>
     <text class='cellText2'>{{desc}}</text>
     <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image>
   </view>
-  <!-- <imageView style='height:100px;'></imageView> -->
+  <view id='law' class='scrollItem' bindtap='jumpInput'>
+    <text class='cellText1'>法律依据</text>
+    <text class='mustText'>*</text>
+    <text class='cellText2'>{{law}}</text>
+    <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image>
+  </view>
   <view class='imageBaseView' style='height:{{58+imageViewHeight}}px;'>
     <view class='titleView'>
       <text class='cellText1'>隐患照片</text>
@@ -33,48 +37,11 @@
       </view>
     </view>
   </view>
-  <view id='danger' class='scrollItem' bindtap='jumpCheckBox'>
-    <text class='cellText1'>潜在事故</text>
-    <text class='mustText'>*</text>
-    <text class='cellText2'>{{dangerString}}</text>
-    <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image>
-  </view>
-  <view id='rectifyType' class='scrollItem' bindtap='jumpRadio' wx:if='{{isqy == false}}'>
-    <text class='cellText1'>整改类型</text>
-    <text class='mustText'>*</text>
-    <text class='cellText2'>{{rectifyType.name}}</text>
-    <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image>
-  </view>
-  <view class='scrollItem' bindtap='jumpRadio'>
-    <text class='cellText1'>整改期限</text>
-    <text class='mustText'>*</text>
-    <picker class='dateChoose' mode="date" value="{{date}}" start="2015-09-01" end="2118-12-31" bindchange="bindDateChange">
-      <view class="picker">
-        {{date}}
-      </view>
-    </picker>
-    <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image>
-  </view>
   <view id='advise' class='scrollItem' bindtap='jumpInput'>
     <text class='cellText1'>整改建议</text>
     <text class='mustText'>*</text>
     <text class='cellText2'>{{advise}}</text>
     <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image>
-  </view>
-  <view id='7' class='scrollItem'>
-    <text class='cellText1'>提交时间</text>
-    <text class='cellText2'>{{time}}</text>
-    <image class="arrow" mode="aspectFit"></image>
-  </view>
-  <view id='address' class='scrollItem'  bindtap='jumpLocation'>
-    <text class='cellText1'>隐患位置</text>
-    <text class='cellText2'>经度：{{longitude}}，纬度：{{latitude}}</text>
-    <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image>
-  </view>
-  <view id='8' class='scrollItem'>
-    <text class='cellText1'>当前位置</text>
-    <text class='cellText2'>{{address}}</text>
-    <image class="arrow" mode="aspectFit"></image>
   </view>
   <view id='9' class='scrollButtonItem'>
     <button class='submitButton' bindtap="submitClick">提交</button>
