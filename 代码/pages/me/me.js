@@ -169,7 +169,37 @@ Page({
             email: ''
 
           })
-        } else {// 监管用户
+        } else if (app.globalData.userInfo.yhlx == 2) {// 检查用户
+          that.setData({
+            isqy: 'false',
+            roleName: '检查人',
+            qyid: app.globalData.userInfo.repRecordid,
+            logo: config.logoImg + app.globalData.userInfo.repRecordid,
+            showCompanyName: app.globalData.userInfo.name,
+            longitude: app.globalData.userInfo.mapx,
+            latitude: app.globalData.userInfo.mapy,
+          })
+        } else if (app.globalData.userInfo.yhlx == 3) {// 管理者
+          that.setData({
+            isqy: 'false',
+            roleName: '管理者',
+            qyid: app.globalData.userInfo.repRecordid,
+            logo: config.logoImg + app.globalData.userInfo.repRecordid,
+            showCompanyName: app.globalData.userInfo.name,
+            longitude: app.globalData.userInfo.mapx,
+            latitude: app.globalData.userInfo.mapy,
+          })
+        } else if (app.globalData.userInfo.yhlx == 4) {// 政府
+          that.setData({
+            isqy: 'false',
+            roleName: '政府',
+            qyid: app.globalData.userInfo.repRecordid,
+            logo: config.logoImg + app.globalData.userInfo.repRecordid,
+            showCompanyName: app.globalData.userInfo.name,
+            longitude: app.globalData.userInfo.mapx,
+            latitude: app.globalData.userInfo.mapy,
+          })
+        }else {// 监管用户
           that.setData({
             isqy: 'false',
             roleName: '监管用户',

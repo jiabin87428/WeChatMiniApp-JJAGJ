@@ -57,25 +57,25 @@
       </view>
       <view id='companyType1' class='scrollItem'>
         <text class='cellText1'>手机</text>
-        <text class='cellText2'>{{showCompanyType}}</text>
+        <text class='cellText2'>{{showPhone}}</text>
       </view>
       <view id='contact' class='scrollItem'>
         <text class='cellText1'>邮箱</text>
-        <text class='cellText2'>{{showContact}}</text>
+        <text class='cellText2'>{{showEmail}}</text>
       </view>
       <view id='contact' class='scrollItem'>
         <text class='cellText1'>已完成项目</text>
-        <text class='cellText2'>{{showContact}}</text>
+        <text class='cellText2'></text>
         <image class="JJ_arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image>
       </view>
       <view id='contact' class='scrollItem'>
         <text class='cellText1'>任务排班</text>
-        <text class='cellText2'>{{showContact}}</text>
+        <text class='cellText2'></text>
         <image class="JJ_arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image>
       </view>
       <view id='contact' class='scrollItem'>
         <text class='cellText1'>报告管理</text>
-        <text class='cellText2'>{{showContact}}</text>
+        <text class='cellText2'></text>
         <image class="JJ_arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image>
       </view>
     </view>
@@ -88,20 +88,20 @@
       </view>
       <view id='companyType1' class='scrollItem'>
         <text class='cellText1'>手机</text>
-        <text class='cellText2'>{{showCompanyType}}</text>
+        <text class='cellText2'>{{showPhone}}</text>
       </view>
       <view id='contact' class='scrollItem'>
         <text class='cellText1'>邮箱</text>
-        <text class='cellText2'>{{showContact}}</text>
+        <text class='cellText2'>{{showEmail}}</text>
       </view>
       <view id='contact' class='scrollItem'>
         <text class='cellText1'>账号管理</text>
-        <text class='cellText2'>{{showContact}}</text>
+        <text class='cellText2'></text>
         <image class="JJ_arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image>
       </view>
       <view id='contact' class='scrollItem'>
         <text class='cellText1'>项目进度审阅</text>
-        <text class='cellText2'>{{showContact}}</text>
+        <text class='cellText2'></text>
         <image class="JJ_arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image>
       </view>
     </view>
@@ -114,19 +114,19 @@
       </view>
       <view id='companyType1' class='scrollItem'>
         <text class='cellText1'>所属部门</text>
-        <text class='cellText2'>{{showCompanyType}}</text>
+        <text class='cellText2'>部门名称</text>
       </view>
       <view id='companyType1' class='scrollItem'>
         <text class='cellText1'>联系电话</text>
-        <text class='cellText2'>{{showCompanyType}}</text>
+        <text class='cellText2'>{{showPhone}}</text>
       </view>
       <view id='companyType1' class='scrollItem'>
         <text class='cellText1'>手机</text>
-        <text class='cellText2'>{{showCompanyType}}</text>
+        <text class='cellText2'>{{showPhone}}</text>
       </view>
       <view id='contact' class='scrollItem'>
         <text class='cellText1'>邮箱</text>
-        <text class='cellText2'>{{showContact}}</text>
+        <text class='cellText2'>{{showEmail}}</text>
       </view>
     </view>
 
