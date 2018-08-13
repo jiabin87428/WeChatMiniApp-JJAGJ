@@ -40,9 +40,28 @@
   </scroll-view>
 </view>
 
-<!--检查人首页-->
+<!--检查人(工程师)首页-->
 <view class='baseView' wx:elif="{{yhlx == 2}}">
-检查人首页
+  <scroll-view scroll-y="true" class='scrollView'>
+    <image bindtap="userClick" class="titleImage" src="../../assets/dangerBG.png" mode="widthFix"></image> 
+    <view class="subBaseView3">
+      <view class='scrollItem'>
+        <image class="point" src="../../assets/point_green.png" mode="aspectFit"></image>
+        <text class='cellText1'>待办任务</text>
+        <text class='cellText2'>5</text>
+      </view>
+      <view class='scrollItem'>
+        <image class="point" src="../../assets/point_yellow.png" mode="aspectFit"></image>
+        <text class='cellText1'>已办任务</text>
+        <text class='cellText2'>3</text>
+      </view>
+      <!-- <view class='scrollItem'>
+        <image class="point" src="../../assets/point_violet.png" mode="aspectFit"></image>
+        <text class='cellText1'>未整改隐患</text>
+        <text class='cellText2'>{{wzgyhs}}</text>
+      </view> -->
+    </view>
+  </scroll-view>
 </view>
 
 <!--默认首页-->

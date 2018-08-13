@@ -25,7 +25,10 @@
     "pages/application/companyInfoDetail",
     "pages/danger/addDanger4JJ",
     "pages/jijie/companyData",
-    "pages/common/companyList"
+    "pages/common/companyList",
+    "pages/me/finishJob",
+    "pages/me/taskPlan",
+    "pages/me/reportManage"
   ],
   "window": {
     "backgroundTextStyle": "light",

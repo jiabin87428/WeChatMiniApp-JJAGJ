@@ -63,17 +63,17 @@
         <text class='cellText1'>邮箱</text>
         <text class='cellText2'>{{showEmail}}</text>
       </view>
-      <view id='contact' class='scrollItem'>
+      <view id='contact' class='scrollItem' bindtap='jumpFinish'>
         <text class='cellText1'>已完成项目</text>
         <text class='cellText2'></text>
         <image class="JJ_arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image>
       </view>
-      <view id='contact' class='scrollItem'>
+      <view id='contact' class='scrollItem' bindtap='jumpPlan'>
         <text class='cellText1'>任务排班</text>
         <text class='cellText2'></text>
         <image class="JJ_arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image>
       </view>
-      <view id='contact' class='scrollItem'>
+      <view id='contact' class='scrollItem' bindtap='jumpManage'>
         <text class='cellText1'>报告管理</text>
         <text class='cellText2'></text>
         <image class="JJ_arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image>

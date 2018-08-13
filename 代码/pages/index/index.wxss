@@ -146,3 +146,8 @@
   height: 58px;
   margin-right: 16px;
 }
+
+/**检查人（工程师）样式**/
+.titleImage{
+  width: 100%; 
+}

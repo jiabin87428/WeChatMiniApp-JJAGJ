@@ -241,5 +241,26 @@ Page({
     wx.navigateTo({
       url: '../me/editMe?longitude=' + this.data.longitude + '&latitude=' + this.data.latitude
     })
-  }
+  },
+
+  // MARK：检查人（工程师）页面方法
+  // 跳转已完成项目页面
+  jumpFinish: function (e) {
+    wx.navigateTo({
+      url: '../me/finishJob'
+    })
+  },
+  // 跳转任务排班页面
+  jumpPlan: function (e) {
+    wx.navigateTo({
+      url: '../me/taskPlan'
+    })
+  },
+  // 跳转报告管理页面
+  jumpManage: function (e) {
+    wx.navigateTo({
+      url: '../me/reportManage'
+    })
+  },
+
 })
