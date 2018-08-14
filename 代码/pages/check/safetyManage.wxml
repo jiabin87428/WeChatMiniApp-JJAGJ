@@ -1,0 +1,77 @@
+<view class="baseView">
+  <scroll-view scroll-y="true" class='scrollView'>
+    <view id='companyName' class='scrollItem'>
+      <text class='cellText1'>生产安全事故应急预案编制并备案</text>
+      <text class='cellText2'>是</text>
+      <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit" ></image>
+    </view>
+    <view id='gsdz' class='scrollItem' bindtap='jumpInput'>
+      <text class='cellText1'>安全生产标准化达标及时间等级</text>
+      <text class='cellText2'>{{qydz}}</text>
+      <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit" wx:if="{{editable =='true'}}"></image>
+    </view>
+    <view id='zdmj' class='scrollItem' bindtap='jumpInput'>
+      <text class='cellText1'>风险分级管控落实情况</text>
+      <text class='cellText2'>{{zdmj}}</text>
+      <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit" wx:if="{{editable =='true'}}"></image>
+    </view>
+    <view id='jzmj' class='scrollItem' bindtap='jumpInput'>
+      <text class='cellText1'>隐患排查制度落实情况</text>
+      <text class='cellText2'>{{jzmj}}</text>
+      <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit" wx:if="{{editable =='true'}}"></image>
+    </view>
+    <view id='qyrs' class='scrollItem' bindtap='jumpInput'>
+      <text class='cellText1'>是否建立企业安全生产责任制</text>
+      <text class='cellText2'>{{qyrs}}</text>
+      <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit" wx:if="{{editable =='true'}}"></image>
+    </view>
+    <view id='aqglrs' class='scrollItem' bindtap='jumpInput'>
+      <text class='cellText1'>是否使用危险化学品</text>
+      <text class='cellText2'>{{aqglrs}}</text>
+      <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit" wx:if="{{editable =='true'}}"></image>
+    </view>
+    <view id='cpms' class='scrollItem' bindtap='jumpInput'>
+      <text class='cellText1'>是否有危化品仓库或周转点</text>
+      <text class='cellText2'>{{cpms}}</text>
+      <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit" wx:if="{{editable =='true'}}"></image>
+    </view>
+    <view id='sbms' class='scrollItem' bindtap='jumpInput'>
+      <text class='cellText1'>安全负责人持证情况</text>
+      <text class='cellText2'>{{sbms}}</text>
+      <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit" wx:if="{{editable =='true'}}"></image>
+    </view>
+    <view id='zyfzr' class='scrollItem' bindtap='jumpInput'>
+      <text class='cellText1'>安全管理员持证情况</text>
+      <text class='cellText2'>{{zyfzr}}</text>
+      <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit" wx:if="{{editable =='true'}}"></image>
+    </view>
+    <view id='zyfzrdh' class='scrollItem' bindtap='jumpInput'>
+      <text class='cellText1'>是否有粉尘区域</text>
+      <text class='cellText2'>{{zyfzrdh}}</text>
+      <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit" wx:if="{{editable =='true'}}"></image>
+    </view>
+    <view id='aqfzr' class='scrollItem' bindtap='jumpInput'>
+      <text class='cellText1'>特种设备检测情况</text>
+      <text class='cellText2'>{{aqfzr}}</text>
+      <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit" wx:if="{{editable =='true'}}"></image>
+    </view>
+    <view id='aqfzrdh' class='scrollItem' bindtap='jumpInput'>
+      <text class='cellText1'>安全生产管理制度是否齐全</text>
+      <text class='cellText2'>{{aqfzrdh}}</text>
+      <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit" wx:if="{{editable =='true'}}"></image>
+    </view>
+    <view id='aqfzrdh' class='scrollItem' bindtap='jumpInput'>
+      <text class='cellText1'>是否有食堂</text>
+      <text class='cellText2'>{{aqfzrdh}}</text>
+      <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit" wx:if="{{editable =='true'}}"></image>
+    </view>
+    <view id='aqfzrdh' class='scrollItem' bindtap='jumpInput'>
+      <text class='cellText1'>防雷装置是否检测</text>
+      <text class='cellText2'>{{aqfzrdh}}</text>
+      <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit" wx:if="{{editable =='true'}}"></image>
+    </view>
+    <view>
+      <button class='submitButton' bindtap="submit" wx:if="{{editable =='true'}}">保存信息</button>
+    </view>
+  </scroll-view>
+</view>

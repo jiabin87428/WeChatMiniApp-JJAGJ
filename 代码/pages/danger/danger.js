@@ -49,18 +49,8 @@ Page({
   // 点击添加隐患
   addClick: function () {
     wx.navigateTo({
-      url: '../danger/addDanger4JJ'
+      url: '../check/firstCheck'
     })
-    // if (!this.checkLogin()) {
-    //   wx.navigateTo({
-    //     url: '../login/login'
-    //   })
-    //   return
-    // } else {
-    //   wx.navigateTo({
-    //     url: '../danger/addDanger'
-    //   })
-    // }
   },
   // 点击隐患列表
   listClick: function () {

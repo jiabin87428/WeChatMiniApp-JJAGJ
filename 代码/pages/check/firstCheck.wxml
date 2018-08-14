@@ -1,0 +1,25 @@
+<!--pages/check/firstCheck.wxml-->
+<view class="baseView">
+  <scroll-view scroll-y="true" class='scrollView'>
+    <view id='desc' class='scrollItem' bindtap='jumpBaseInfo'>
+      <text class='cellText1'>企业基本信息</text>
+      <text class='mustText'>*</text>
+      <text class='cellText2'>{{desc}}</text>
+      <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image>
+    </view>
+    <view id='desc' class='scrollItem' bindtap='jumpSafety'>
+      <text class='cellText1'>安全管理信息</text>
+      <text class='mustText'>*</text>
+      <text class='cellText2'>{{desc}}</text>
+      <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image>
+    </view>
+    <view id='desc' class='scrollItem' bindtap='jumpDangerList'>
+      <text class='cellText1'>隐患信息</text>
+      <text class='cellText2'>{{desc}}</text>
+      <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image>
+    </view>
+    <view id='9' class='scrollButtonItem'>
+      <button class='submitButton' bindtap="submitClick">提交</button>
+    </view>
+  </scroll-view>
+</view>

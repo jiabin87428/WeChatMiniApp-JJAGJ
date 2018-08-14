@@ -28,7 +28,10 @@
     "pages/common/companyList",
     "pages/me/finishJob",
     "pages/me/taskPlan",
-    "pages/me/reportManage"
+    "pages/me/reportManage",
+    "pages/check/firstCheck",
+    "pages/check/baseInfo",
+    "pages/check/safetyManage"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -52,7 +55,7 @@
         "pagePath": "pages/danger/danger",
         "iconPath": "assets/dangerCheck_unselected.png",
         "selectedIconPath": "assets/dangerCheck.png",
-        "text": "隐患排查"
+        "text": "检查任务"
       },
       {
         "pagePath": "pages/application/application",
