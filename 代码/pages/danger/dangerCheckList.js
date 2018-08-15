@@ -122,6 +122,8 @@ Page({
   },
   // 添加新隐患接口
   addDanger: function () {
-
+    wx.navigateTo({
+      url: '../danger/addDanger4JJ'
+    })
   },
 })

@@ -5,7 +5,7 @@
       <text class='cellText3'>{{qymc}}</text>
       <image class="arrow" src="" mode="aspectFit" ></image>
     </view>
-    <view id='gsdz' class='scrollItem' bindtap='jumpInput'>
+    <view id='qydz' class='scrollItem' bindtap='jumpInput'>
       <text class='cellText1'>公司地址</text>
       <text class='cellText2'>{{qydz}}</text>
       <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit" wx:if="{{editable =='true'}}"></image>

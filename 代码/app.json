@@ -31,7 +31,9 @@
     "pages/me/reportManage",
     "pages/check/firstCheck",
     "pages/check/baseInfo",
-    "pages/check/safetyManage"
+    "pages/check/safetyManage",
+    "pages/check/editPage",
+    "pages/check/missionList"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -52,7 +54,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/danger/danger",
+        "pagePath": "pages/check/missionList",
         "iconPath": "assets/dangerCheck_unselected.png",
         "selectedIconPath": "assets/dangerCheck.png",
         "text": "检查任务"

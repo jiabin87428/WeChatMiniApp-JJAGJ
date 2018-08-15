@@ -1,15 +1,18 @@
-// pages/check/safetyManage.js
+// pages/check/missionList.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    // 是否可编辑
-    editable : 'true',
-
-    // 对象数组
-    params : {},
+    // 任务列表数据
+    missionList : [
+      {
+        'rwid' : '1',                     // 任务ID
+        'rwmc' : '上海歌略软件科技有限公司',  // 任务名称
+        'sffc' : 'false'                  // 是否复查
+      }
+    ],
   },
 
   /**
@@ -30,7 +33,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('1111')
+  
   },
 
   /**
@@ -67,16 +70,11 @@ Page({
   onShareAppMessage: function () {
   
   },
-  
-  // 跳转编辑页面
-  jumpEdit: function (e) {
-    var viewId = e.currentTarget.id;
-    var data = this.data.params[viewId];
-    if (data == null) {
-      data = {}
-    }
+
+  // 跳转任务页面
+  jumpMission: function (e) {
     wx.navigateTo({
-      url: '../check/editPage?id=' + viewId + '&data=' + JSON.stringify(data)
+      url: '../danger/danger'
     })
-  }
+  },
 })

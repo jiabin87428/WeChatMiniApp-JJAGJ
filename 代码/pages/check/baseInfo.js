@@ -102,33 +102,33 @@ Page({
     } else if (viewId == "zdmj") {
       placeholder = "请输入企业占地面积（平方米）"
       inputstring = this.data.zdmj
-    } else if (viewId == "phone") {
-      placeholder = "请输入联系方式"
-      inputstring = this.data.phone
-    } else if (viewId == "email") {
-      placeholder = "请输入邮箱"
-      inputstring = this.data.email
-    } else if (viewId == "address") {
-      placeholder = "请输入企业地址"
-      inputstring = this.data.address
-    } else if (viewId == "name") {
-      placeholder = "请输入姓名"
-      inputstring = this.data.name
-    } else if (viewId == "sex") {
-      placeholder = "请输入性别"
-      inputstring = this.data.sex
-    } else if (viewId == "job") {
-      placeholder = "请输入岗位"
-      inputstring = this.data.job
-    } else if (viewId == "dep") {
-      placeholder = "请输入所在部门"
-      inputstring = this.data.dep
-    } else if (viewId == "jgEmail") {
-      placeholder = "请输入邮箱"
-      inputstring = this.data.email
-    } else if (viewId == "mobile") {
-      placeholder = "请输入联系手机"
-      inputstring = this.data.mobile
+    } else if (viewId == "jzmj") {
+      placeholder = "请输入企业建筑面积（平方米）"
+      inputstring = this.data.jzmj
+    } else if (viewId == "qyrs") {
+      placeholder = "请输入企业人数"
+      inputstring = this.data.qyrs
+    } else if (viewId == "aqglrs") {
+      placeholder = "请输入安全管理人数"
+      inputstring = this.data.aqglrs
+    } else if (viewId == "cpms") {
+      placeholder = "请输入产品描述"
+      inputstring = this.data.cpms
+    } else if (viewId == "sbms") {
+      placeholder = "请输入设备描述"
+      inputstring = this.data.sbms
+    } else if (viewId == "zyfzr") {
+      placeholder = "请输入主要负责人姓名"
+      inputstring = this.data.zyfzr
+    } else if (viewId == "zyfzrdh") {
+      placeholder = "请输入主要负责人电话"
+      inputstring = this.data.zyfzrdh
+    } else if (viewId == "aqfzr") {
+      placeholder = "请输入安全负责人姓名"
+      inputstring = this.data.aqfzr
+    } else if (viewId == "aqfzrdh") {
+      placeholder = "请输入安全负责人电话"
+      inputstring = this.data.aqfzrdh
     }
     wx.navigateTo({
       url: '../common/inputPage?id=' + viewId + '&placeholder=' + placeholder + '&inputstring=' + inputstring
