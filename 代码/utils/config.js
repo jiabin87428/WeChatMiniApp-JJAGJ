@@ -50,7 +50,15 @@ var config = {
   updateQyxx: `${host}/getXx.so?action=updateQyxx`,
 
   // 获取企业信息
-  getQyxx: `${host}/getXx.so?action=getQyxx`
+  getQyxx: `${host}/getXx.so?action=getQyxx`,
+
+  //-----------纪杰------------
+  
+  // 获取任务列表
+  getRw: `${host}/getXx.so?action=getRw&`,
+
+  // 获取企业信息和企业安全生产管理现状
+  getBaseAndSaftyInfo: `${host}/getXx.so?action=getQyxx&qyid=`,
 };
 //对外把对象config返回
 module.exports = config

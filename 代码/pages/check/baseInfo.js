@@ -7,37 +7,44 @@ Page({
   data: {
     // 是否可编辑
     editable: 'true',
-    // 企业名称
-    qymc: '上海歌略软件科技有限公司',
-    // 企业地址
-    qydz: '上海市浦东新区XX路XX号101室',
-    // 占地面积
-    zdmj: '',
-    // 建筑面积
-    jzmj: '',
-    // 企业人数
-    qyrs: '',
-    // 安全管理人数
-    aqglrs: '',
-    // 产品描述（描述主要产品及产量）
-    cpms: '',
-    // 设备描述（描述主要设施设备）
-    sbms: '',
-    // 主要负责人
-    zyfzr: '',
-    // 主要负责人电话
-    zyfzrdh: '',
-    // 安全负责人
-    aqfzr: '',
-    // 安全负责人电话
-    aqfzrdh: '',
+
+    // 企业基础信息对象
+    params : {
+      // 企业名称
+      qymc: '',
+      // 企业地址
+      qydz: '',
+      // 占地面积
+      zdmj: '',
+      // 建筑面积
+      jzmj: '',
+      // 企业人数
+      qyrs: '',
+      // 安全管理人数
+      aqglrs: '',
+      // 产品描述（描述主要产品及产量）
+      cpms: '',
+      // 设备描述（描述主要设施设备）
+      sbms: '',
+      // 主要负责人
+      zyfzr: '',
+      // 主要负责人电话
+      zyfzrdh: '',
+      // 安全负责人
+      aqfzr: '',
+      // 安全负责人电话
+      aqfzrdh: '',
+    },
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var params = options.data
+    this.setData({
+      params: JSON.parse(params)
+    })
   },
 
   /**

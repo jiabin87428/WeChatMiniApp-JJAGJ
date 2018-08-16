@@ -1,4 +1,6 @@
-// pages/check/missionList.js
+var request = require('../../utils/request.js')
+var config = require('../../utils/config.js')
+var app = getApp()
 Page({
 
   /**
@@ -6,13 +8,7 @@ Page({
    */
   data: {
     // 任务列表数据
-    missionList : [
-      {
-        'rwid' : '1',                     // 任务ID
-        'rwmc' : '上海歌略软件科技有限公司',  // 任务名称
-        'sffc' : 'false'                  // 是否复查
-      }
-    ],
+    missionList : [],
   },
 
   /**
@@ -33,7 +29,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.getMissionList()
   },
 
   /**
@@ -73,8 +69,37 @@ Page({
 
   // 跳转任务页面
   jumpMission: function (e) {
+    // wx.navigateTo({
+    //   url: '../danger/danger'
+    // })
+    var idx = e.currentTarget.dataset.index
+    var item = e.currentTarget.dataset.item
+    var qyid = item.qyid
     wx.navigateTo({
-      url: '../danger/danger'
+      url: '../check/firstCheck?id=' + qyid
     })
   },
+
+  // 获取任务列表
+  getMissionList: function () {
+    var userid = app.globalData.userInfo.repRecordid
+    var that = this
+    //调用接口
+    request.requestLoading(config.getRw + 'userid=' + userid + '&clzt!=已完成', null, '正在加载数据', function (res) {
+      console.log(res)
+      if (res.repRwxx != null) {
+        that.setData({
+          missionList: res.repRwxx
+        })
+      } else {
+        wx.showToast({
+          title: res.repMsg,
+        })
+      }
+    }, function () {
+      wx.showToast({
+        title: '加载数据失败',
+      })
+    })
+  }
 })

@@ -7,7 +7,6 @@ Page({
   data: {
     // 是否可编辑
     editable : 'true',
-
     // 对象数组
     params : {},
   },
@@ -16,7 +15,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var params = options.data
+    this.setData({
+      params: JSON.parse(params)
+    })
   },
 
   /**

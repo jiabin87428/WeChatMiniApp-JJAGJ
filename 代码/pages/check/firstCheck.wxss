@@ -45,6 +45,8 @@
   color: #696969;
   margin-left: 10px;
   width: 150px;
+  height: 58px;
+  line-height: 58px;
 }
 .cellText2 {
   font-size: 14px;

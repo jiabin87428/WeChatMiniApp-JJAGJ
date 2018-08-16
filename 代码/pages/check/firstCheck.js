@@ -1,18 +1,32 @@
 // pages/check/firstCheck.js
+var request = require('../../utils/request.js')
+var config = require('../../utils/config.js')
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    // 企业ID
+    qyid : '',
+    // 是否需要复查
+    needReCheck : false,
+    // 处理情况
+    clqk : '',
+
+    // 基本信息和安全管理信息对象
+    baseAndSaftyObj : {},
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var qyid = options.id
+    this.setData({
+      qyid: qyid
+    })
   },
 
   /**
@@ -26,7 +40,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.getBaseAndSaftyInfo()
   },
 
   /**
@@ -67,14 +81,14 @@ Page({
   // 跳转企业基本信息
   jumpBaseInfo: function () {
     wx.navigateTo({
-      url: '../check/baseInfo'
+      url: '../check/baseInfo?data=' + JSON.stringify(this.data.baseAndSaftyObj)
     })
   },
 
   // 跳转安全生产管理信息
   jumpSafety: function () {
-    wx.navigateTo({
-      url: '../check/safetyManage'
+    wx.navigateTo({ 
+      url: '../check/safetyManage?data=' + JSON.stringify(this.data.baseAndSaftyObj)
     })
   },
 
@@ -82,6 +96,49 @@ Page({
   jumpDangerList: function () {
     wx.navigateTo({
       url: '../danger/dangerCheckList'
+    })
+  },
+
+  // 是否需要复查
+  switch2Change: function (e) {
+    this.setData({
+      needReCheck: e.detail.value
+    })
+  },
+
+  // 跳转输入页面
+  jumpInput: function (e) {
+    var viewId = e.currentTarget.id;
+    var placeholder = ""
+    var inputstring = ""
+    if (viewId == "clqk") {
+      placeholder = "请输入处理情况"
+      inputstring = this.data.clqk
+    }
+    wx.navigateTo({
+      url: '../common/inputPage?id=' + viewId + '&placeholder=' + placeholder + '&inputstring=' + inputstring
+    })
+  },
+
+  // 获取企业基本信息和安全生产管理现状信息
+  getBaseAndSaftyInfo: function () {
+    var that = this
+    //调用接口
+    request.requestLoading(config.getBaseAndSaftyInfo + that.data.qyid, null, '正在加载数据', function (res) {
+      console.log(res)
+      if (res != null) {
+        that.setData({
+          baseAndSaftyObj: res
+        })
+      } else {
+        wx.showToast({
+          title: res.repMsg,
+        })
+      }
+    }, function () {
+      wx.showToast({
+        title: '加载数据失败',
+      })
     })
   },
 })
