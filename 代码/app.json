@@ -33,7 +33,9 @@
     "pages/check/baseInfo",
     "pages/check/safetyManage",
     "pages/check/editPage",
-    "pages/check/missionList"
+    "pages/check/missionList",
+    "pages/danger/dangerDetail4JJ",
+    "pages/check/deviceInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",

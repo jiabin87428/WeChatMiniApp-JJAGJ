@@ -76,7 +76,7 @@ Page({
     var item = e.currentTarget.dataset.item
     var qyid = item.qyid
     wx.navigateTo({
-      url: '../check/firstCheck?id=' + qyid
+      url: '../check/firstCheck?id=' + qyid + '&rwid=' + item.rwid + '&sfxfc=' + item.sfxfc + '&clqk=' + item.clqk
     })
   },
 

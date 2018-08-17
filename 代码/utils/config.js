@@ -24,7 +24,7 @@ var config = {
   getType: `${host}/getXx.so?action=getType`,
 
   // 隐患列表
-  getYhList: `${host}/getXx.so?action=getYhList`,
+  getYhList: `${host}/getXx.so?action=getYhList&qyid=`,
 
   // 隐患详情
   getOneYh: `${host}/getXx.so?action=getOneYh`,
@@ -59,6 +59,15 @@ var config = {
 
   // 获取企业信息和企业安全生产管理现状
   getBaseAndSaftyInfo: `${host}/getXx.so?action=getQyxx&qyid=`,
+
+  // 更新企业基本信息和安全生产信息
+  updateBaseInfoAndSaftyInfo: `${host}/getXx.so?action=updateQyxx`,
+
+  // 更新任务信息
+  updateRw: `${host}/getXx.so?action=updateRw`,
+
+  // 获取设备信息
+  getSb: `${host}/getXx.so?action=getSb`,
 };
 //对外把对象config返回
 module.exports = config

@@ -1,4 +1,4 @@
-// pages/check/safetyManage.js
+// pages/check/deviceInfo.js
 var request = require('../../utils/request.js')
 var config = require('../../utils/config.js')
 var app = getApp()
@@ -8,27 +8,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // 是否可编辑
-    editable : 'true',
-
-    // 企业ID
-    qyid: '',
-
-    // 对象数组
-    params : {},
+    // 设备信息列表
+    sbList: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var qyid = options.qyid
-    var params = options.data
-    this.setData({
-      qyid: qyid,
-      params: JSON.parse(params)
-    })
-    this.data.params['qyid'] = qyid
+  
   },
 
   /**
@@ -42,7 +30,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('1111')
+    this.getDeviceInfo()
   },
 
   /**
@@ -79,34 +67,16 @@ Page({
   onShareAppMessage: function () {
   
   },
-  
-  // 跳转编辑页面
-  jumpEdit: function (e) {
-    var viewId = e.currentTarget.id;
-    // var data = this.data.params[viewId];
-    // if (data == null) {
-    //   data = {}
-    // }
-    wx.navigateTo({
-      url: '../check/editPage?id=' + viewId + '&data=' + JSON.stringify(this.data.params)
-    })
-  },
 
-  // 保存安全信息
-  submit: function (e) {
+  // 获取设备信息
+  getDeviceInfo: function () {
     var that = this
     //调用接口
-    request.requestLoading(config.updateBaseInfoAndSaftyInfo, this.data.params, '正在加载数据', function (res) {
+    request.requestLoading(config.getSb, null, '正在加载数据', function (res) {
       console.log(res)
-      if (res != null) {
-        if (res.repCode == null || res.repCode != '500') {
-          wx.navigateBack({
-            delta: 1
-          })
-        }
-      } else {
-        wx.showToast({
-          title: res.repMsg,
+      if (res.repSbxx != null) {
+        that.setData({
+          sbList: res.repSbxx
         })
       }
     }, function () {

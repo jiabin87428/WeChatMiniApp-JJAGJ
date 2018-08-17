@@ -13,7 +13,7 @@
       <text class='cellText2'></text>
       <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image>
     </view>
-    <view class='scrollItem' bindtap=''>
+    <view class='scrollItem' bindtap='jumpDevice'>
       <text class='cellText1'>设备信息</text>
       <text class='cellText2'></text>
       <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image>

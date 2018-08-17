@@ -18,12 +18,15 @@ Page({
     // 是否企业用户
     isqy: true,
 
+    // 企业ID
+    qyid: '',
+    // 企业名称
+    qymc: '',
+
     // 提交时间
     time: "",
     // 当前位置
     address: "",
-    // 企业名称
-    companyName: null,
     // 隐患位置
     latitude: "0",
     longitude: "0",
@@ -63,6 +66,13 @@ Page({
     this.setData({
       time: time
     });
+
+    var qyid = options.qyid
+    var qymc = options.qymc
+    this.setData({
+      qyid: qyid,
+      qymc: qymc
+    })
   },
 
   /**
@@ -241,22 +251,14 @@ Page({
   // 提交事件
   submitClick: function (e) {
     var that = this
-    var companyName = ""
-    if (this.data.isqy == true) {
-      companyName = app.globalData.userInfo.repName
-    } else {
-      companyName = this.data.companyName.name
-    }
     var params = {
       "yhid": "",
-      "qyid": app.globalData.userInfo.repRecordid,
-      "qymc": companyName,
-      "wtms": this.data.desc,
+      "qyid": this.data.qyid,
+      "qymc": this.data.qymc,
+      "xcwt": this.data.desc,
       "flyj": this.data.law,
-      "qzyh": this.data.dangerString,
-      "zglx": this.data.rectifyType.name,
-      "zgqx": this.data.date,
       "zgjy": this.data.advise,
+
       "tjsj": this.data.time,
       "dqwz": this.data.address,
       "sfyzg": "false",
@@ -272,7 +274,7 @@ Page({
       console.log(res)
       if (res.repCode == '200') {
         that.setData({
-          dangerId: res.recordid
+          dangerId: res.yhid
         })
         that.submitImage()
       } else {

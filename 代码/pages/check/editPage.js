@@ -1,4 +1,5 @@
 // pages/check/editPage.js
+var util = require('../../utils/util.js');
 Page({
 
   /**
@@ -118,7 +119,12 @@ Page({
     var pages = getCurrentPages();             //  获取页面栈
     var prevPage = pages[pages.length - 2];   // 上一个页面
     var key = this.data.viewId
-    prevPage.data.params[[key]] = this.data.returnObj
+    // prevPage.data.params[[key]] = this.data.returnObj
+    // prevPage.data.assign(this.data.returnObj)
+    var obj = util.mergeObject(prevPage.data.params, this.data.returnObj)
+    prevPage.setData({
+      params: obj
+    })
     wx.navigateBack({
       delta: 1
     })
