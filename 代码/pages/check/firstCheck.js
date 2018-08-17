@@ -103,7 +103,7 @@ Page({
   // 跳转设备信息
   jumpDevice: function (e) {
     wx.navigateTo({
-      url: '../check/deviceInfo'
+      url: '../check/deviceInfo?qyid=' + this.data.qyid
     })
   },
 

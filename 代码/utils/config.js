@@ -67,7 +67,7 @@ var config = {
   updateRw: `${host}/getXx.so?action=updateRw`,
 
   // 获取设备信息
-  getSb: `${host}/getXx.so?action=getSb`,
+  getSb: `${host}/getXx.so?action=getSb&qyid=`,
 };
 //对外把对象config返回
 module.exports = config

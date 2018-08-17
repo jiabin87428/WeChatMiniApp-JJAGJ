@@ -35,7 +35,8 @@
     "pages/check/editPage",
     "pages/check/missionList",
     "pages/danger/dangerDetail4JJ",
-    "pages/check/deviceInfo"
+    "pages/check/deviceInfo",
+    "pages/check/deviceDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

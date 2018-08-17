@@ -1,26 +1,21 @@
-// pages/check/deviceInfo.js
-var request = require('../../utils/request.js')
-var config = require('../../utils/config.js')
-var app = getApp()
+// pages/check/deviceDetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    // 企业ID
-    qyid: '',
-    // 设备信息列表
-    sbList: [],
+    // 设备详情模型
+    deviceInfo: {},
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var qyid = options.qyid
+    var data = JSON.parse(options.data)
     this.setData({
-      qyid: qyid
+      deviceInfo: data
     })
   },
 
@@ -35,7 +30,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getDeviceInfo()
+  
   },
 
   /**
@@ -71,32 +66,6 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
-
-  // 获取设备信息
-  getDeviceInfo: function () {
-    var that = this
-    //调用接口
-    request.requestLoading(config.getSb + that.data.qyid, null, '正在加载数据', function (res) {
-      console.log(res)
-      if (res.repSbxx != null) {
-        that.setData({
-          sbList: res.repSbxx
-        })
-      }
-    }, function () {
-      wx.showToast({
-        title: '加载数据失败',
-      })
-    })
-  },
-
-  // 跳转设备详情
-  jumpDeviceDetail: function (e) {
-    var item = e.currentTarget.dataset.item
-    wx.navigateTo({
-      url: '../check/deviceDetail?data=' + JSON.stringify(item)
-    })
   },
 
   // 返回上一页
