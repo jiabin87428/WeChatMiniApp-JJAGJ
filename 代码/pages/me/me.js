@@ -12,8 +12,8 @@ Page({
     isqy: 'false',
     // 用户类型
     yhlx: 0,
-    // 企业ID
-    qyid: '',
+    // 用户ID
+    userid: '',
     // 用户头像链接
     logo: '',
     roleName:'企业用户',
@@ -116,7 +116,7 @@ Page({
         that.setData({
           logo: res.tempFilePaths[0]
         })
-        app.uploadDIY('?qyid=' + that.data.qyid, [that.data.logo], 0, 0, 0, 1, function (resultCode) {
+        app.uploadDIY('?qyid=' + that.data.userid, [that.data.logo], 0, 0, 0, 1, function (resultCode) {
           if (resultCode == '200') {
             that.checkLogin()
           }
@@ -142,38 +142,13 @@ Page({
       success: function (res) {
         app.globalData.userInfo = res.data
         that.setData({
-          yhlx: app.globalData.userInfo.yhlx
-          // yhlx: 4
+          yhlx: app.globalData.userInfo.yhlx,
+          userid: app.globalData.userInfo.userid
         })
-        if (app.globalData.userInfo.yhlx == 0) {// 企业用户
-          that.setData({
-            isqy: 'true',
-            qyid: app.globalData.userInfo.repRecordid,
-            logo: config.logoImg + app.globalData.userInfo.repRecordid,
-            roleName: '企业用户',
-            showCompanyName: app.globalData.userInfo.repName,
-            showCompanyPlace: app.globalData.userInfo.companyLocal,
-            showCompanyType: app.globalData.userInfo.companyType,
-            showContact: app.globalData.userInfo.inChargePerson,
-            showPhone: app.globalData.userInfo.mobile,
-            showEmail: app.globalData.userInfo.email,
-            showAddress: app.globalData.userInfo.address,
-            longitude: app.globalData.userInfo.mapx,
-            latitude: app.globalData.userInfo.mapy,
-
-            name: '',
-            sex: '',
-            job: '',
-            dep: '',
-            mobile: '',
-            email: ''
-
-          })
-        } else if (app.globalData.userInfo.yhlx == 2) {// 检查用户
+        if (app.globalData.userInfo.yhlx == 2) {// 检查用户
           that.setData({
             isqy: 'false',
             roleName: '检查人',
-            qyid: app.globalData.userInfo.repRecordid,
             logo: config.logoImg + app.globalData.userInfo.repRecordid,
             showCompanyName: app.globalData.userInfo.name,
             longitude: app.globalData.userInfo.mapx,
@@ -183,7 +158,6 @@ Page({
           that.setData({
             isqy: 'false',
             roleName: '管理者',
-            qyid: app.globalData.userInfo.repRecordid,
             logo: config.logoImg + app.globalData.userInfo.repRecordid,
             showCompanyName: app.globalData.userInfo.name,
             longitude: app.globalData.userInfo.mapx,
@@ -193,37 +167,8 @@ Page({
           that.setData({
             isqy: 'false',
             roleName: '政府',
-            qyid: app.globalData.userInfo.repRecordid,
             logo: config.logoImg + app.globalData.userInfo.repRecordid,
             showCompanyName: app.globalData.userInfo.name,
-            longitude: app.globalData.userInfo.mapx,
-            latitude: app.globalData.userInfo.mapy,
-          })
-        }else {// 监管用户
-          that.setData({
-            isqy: 'false',
-            roleName: '监管用户',
-            qyid: app.globalData.userInfo.repRecordid,
-            logo: config.logoImg + app.globalData.userInfo.repRecordid,
-            showCompanyName: app.globalData.userInfo.name,
-            showCompanyPlace: "",
-            showCompanyType: "",
-            showContact: "",
-            showPhone: "",
-            showEmail: "",
-            showAddress: "",
-
-            name: app.globalData.userInfo.name == null ? '' : app.globalData.userInfo.name,
-            // 性别
-            sex: app.globalData.userInfo.sex == null ? '' : app.globalData.userInfo.sex,
-            // 岗位
-            job: app.globalData.userInfo.job == null ? '' : app.globalData.userInfo.job,
-            // 所在部门
-            dep: app.globalData.userInfo.dep == null ? '' : app.globalData.userInfo.dep,
-            // 联系手机
-            mobile: app.globalData.userInfo.mobile == null ? '' : app.globalData.userInfo.mobile,
-            // 邮箱
-            email: app.globalData.userInfo.email == null ? '' : app.globalData.userInfo.email,
             longitude: app.globalData.userInfo.mapx,
             latitude: app.globalData.userInfo.mapy,
           })
@@ -247,19 +192,19 @@ Page({
   // 跳转已完成项目页面
   jumpFinish: function (e) {
     wx.navigateTo({
-      url: '../me/finishJob'
+      url: '../me/taskInMe?state=' + '已完成'
     })
   },
   // 跳转任务排班页面
   jumpPlan: function (e) {
     wx.navigateTo({
-      url: '../me/taskPlan'
+      url: '../me/taskInMe?state=' + '未完成'
     })
   },
   // 跳转报告管理页面
   jumpManage: function (e) {
     wx.navigateTo({
-      url: '../me/reportManage'
+      url: '../me/taskInMe?state=' + '未完成'
     })
   },
 

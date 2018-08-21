@@ -139,6 +139,7 @@
   -webkit-line-clamp:10;
   overflow: hidden;
   text-overflow:ellipsis;
+  text-align: right;
 }
 
 .JJ_arrow {

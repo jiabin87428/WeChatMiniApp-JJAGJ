@@ -26,9 +26,6 @@
     "pages/danger/addDanger4JJ",
     "pages/jijie/companyData",
     "pages/common/companyList",
-    "pages/me/finishJob",
-    "pages/me/taskPlan",
-    "pages/me/reportManage",
     "pages/check/firstCheck",
     "pages/check/baseInfo",
     "pages/check/safetyManage",
@@ -36,7 +33,8 @@
     "pages/check/missionList",
     "pages/danger/dangerDetail4JJ",
     "pages/check/deviceInfo",
-    "pages/check/deviceDetail"
+    "pages/check/deviceDetail",
+    "pages/me/taskInMe"
   ],
   "window": {
     "backgroundTextStyle": "light",

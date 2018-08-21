@@ -9,7 +9,9 @@ Page({
   data: {
     scrollHeight: 0,
     // 任务列表数据
-    missionList : [],
+    missionList: [],
+    // 任务状态
+    state: '',
   },
 
   /**
@@ -17,6 +19,10 @@ Page({
    */
   onLoad: function (options) {
     var that = this
+    var sta = options.state
+    that.setData({
+      state: sta,
+    })
     wx.getSystemInfo({
       success: function (res) {
         console.info(res.windowHeight);
@@ -31,7 +37,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
@@ -45,35 +51,35 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   },
 
   // 跳转任务页面
@@ -94,7 +100,7 @@ Page({
     var userid = app.globalData.userInfo.repRecordid
     var that = this
     //调用接口
-    request.requestLoading(config.getRw + 'userid=' + userid + '&clzt!=已完成', null, '正在加载数据', function (res) {
+    request.requestLoading(config.getRw + 'userid=' + userid + '&clzt=' + that.data.state, null, '正在加载数据', function (res) {
       console.log(res)
       if (res.repRwxx != null) {
         that.setData({

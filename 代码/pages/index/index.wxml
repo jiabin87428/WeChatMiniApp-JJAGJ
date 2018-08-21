@@ -1,16 +1,16 @@
 <!--index.wxml-->
-<!--首页-用户类型为检查人员-->
+<!--首页-用户类型为管理者或政府-->
 <view class='baseView' wx:if="{{yhlx == 3 || yhlx == 4}}">
   <scroll-view scroll-y="true" class='scrollView'>
-    <view id='companyName' class='scrollItem' bindtap='jumpRadio'>
+    <view id='local' class='scrollItem' bindtap='jumpLocal'>
       <text class='JJ_cellText1'>区-街道</text>
-      <text class='JJ_cellText2'>{{companyName.name}}</text>
+      <text class='JJ_cellText2'>{{orgname}}</text>
       <image class="JJ_arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image> 
     </view>
     <view class='scrollItem'>
       <image class="point" src="../../assets/point_green.png" mode="aspectFit"></image>
       <text class='cellText1'>已查企业数</text>
-      <text class='cellText2'>{{yhzs}}</text>
+      <text class='cellText2'>{{ycqys}}</text>
     </view>
     <view class='scrollItem'>
       <image class="point" src="../../assets/point_yellow.png" mode="aspectFit"></image>
@@ -20,23 +20,23 @@
     <view class='scrollItem'>
       <image class="point" src="../../assets/point_violet.png" mode="aspectFit"></image>
       <text class='cellText1'>复查已整改总数</text>
-      <text class='cellText2'>{{yhzs}}</text>
+      <text class='cellText2'>{{fcyzgzs}}</text>
     </view>
     <view class='scrollItem'>
       <image class="point" src="../../assets/point_blue.png" mode="aspectFit"></image>
       <text class='cellText1'>重大隐患</text>
-      <text class='cellText2'>{{yhzs}}</text>
+      <text class='cellText2'>{{zdyhs}}</text>
     </view>
     <view class='scrollItem'>
       <image class="point" src="../../assets/point_green.png" mode="aspectFit"></image>
       <text class='cellText1'>不配合企业</text>
-      <text class='cellText2'>{{yhzs}}</text>
+      <text class='cellText2'>{{bphqy}}</text>
     </view>
-    <view id='companyName' class='scrollItem' bindtap='getCompanyData'>
+    <!-- <view id='companyName' class='scrollItem' bindtap='getCompanyData'>
       <text class='JJ_cellText1'>企业管理数据统计</text>
       <text class='JJ_cellText2'>{{companyName.name}}</text>
       <image class="JJ_arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image> 
-    </view>
+    </view> -->
   </scroll-view>
 </view>
 
@@ -48,12 +48,12 @@
       <view class='scrollItem'>
         <image class="point" src="../../assets/point_green.png" mode="aspectFit"></image>
         <text class='cellText1'>待办任务</text>
-        <text class='cellText2'>5</text>
+        <text class='cellText2'>{{dbrws}}</text>
       </view>
       <view class='scrollItem'>
         <image class="point" src="../../assets/point_yellow.png" mode="aspectFit"></image>
         <text class='cellText1'>已办任务</text>
-        <text class='cellText2'>3</text>
+        <text class='cellText2'>{{ybrws}}</text>
       </view>
       <!-- <view class='scrollItem'>
         <image class="point" src="../../assets/point_violet.png" mode="aspectFit"></image>

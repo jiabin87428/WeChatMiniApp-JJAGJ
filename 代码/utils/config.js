@@ -68,6 +68,9 @@ var config = {
 
   // 获取设备信息
   getSb: `${host}/getXx.so?action=getSb&qyid=`,
+
+  // 获取区、街道（总共有3层：市、区、镇）
+  getLocal: `${host}/getXx.so?action=getLocal&orgid=`,
 };
 //对外把对象config返回
 module.exports = config
