@@ -34,7 +34,8 @@
     "pages/danger/dangerDetail4JJ",
     "pages/check/deviceInfo",
     "pages/check/deviceDetail",
-    "pages/me/taskInMe"
+    "pages/me/taskInMe",
+    "pages/application/vedioPlay"
   ],
   "window": {
     "backgroundTextStyle": "light",
