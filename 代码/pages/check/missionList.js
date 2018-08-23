@@ -91,7 +91,7 @@ Page({
 
   // 获取任务列表
   getMissionList: function () {
-    var userid = app.globalData.userInfo.repRecordid
+    var userid = app.globalData.userInfo.userid
     var that = this
     //调用接口
     request.requestLoading(config.getRw + 'userid=' + userid + '&clzt!=已完成', null, '正在加载数据', function (res) {
