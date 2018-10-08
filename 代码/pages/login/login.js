@@ -41,7 +41,7 @@ Page({
           data: res
         })
         wx.navigateBack({
-          delta: 1
+          delta: 2
         })
       }
     }, function () {

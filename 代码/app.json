@@ -23,19 +23,23 @@
     "pages/application/standardInfo",
     "pages/manger/companyFilter",
     "pages/application/companyInfoDetail",
-    "pages/danger/addDanger4JJ",
-    "pages/jijie/companyData",
-    "pages/common/companyList",
-    "pages/check/firstCheck",
-    "pages/check/baseInfo",
-    "pages/check/safetyManage",
-    "pages/check/editPage",
-    "pages/check/missionList",
-    "pages/danger/dangerDetail4JJ",
-    "pages/check/deviceInfo",
-    "pages/check/deviceDetail",
-    "pages/me/taskInMe",
-    "pages/application/vedioPlay"
+    "pages/danger/dangerTypeSelect",
+    "pages/danger/dangerDetailSelect",
+    "pages/login/chooseLoginType",
+    "pages/danger/dangerSearchList",
+    "pages/laws/laws",
+    "pages/laws/lawsDetail",
+    "pages/laws/lawsInfoSearch",
+    "pages/danger/projectList",
+    "pages/danger/addProject",
+    "pages/danger/danger4JG",
+    "pages/laws/lawList",
+    "pages/laws/lawGrab",
+    "pages/common/webView",
+    "pages/danger/projectSearch",
+    "pages/danger/dangerSearch",
+    "pages/me/companyList",
+    "pages/me/companyEdit"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -56,16 +60,16 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/check/missionList",
+        "pagePath": "pages/danger/danger",
         "iconPath": "assets/dangerCheck_unselected.png",
         "selectedIconPath": "assets/dangerCheck.png",
-        "text": "检查任务"
+        "text": "隐患排查"
       },
       {
-        "pagePath": "pages/application/application",
+        "pagePath": "pages/laws/laws",
         "iconPath": "assets/application_unselected.png",
         "selectedIconPath": "assets/application.png",
-        "text": "应用"
+        "text": "法律法规"
       },
       {
         "pagePath": "pages/me/me",

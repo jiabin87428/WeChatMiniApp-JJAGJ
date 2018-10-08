@@ -4,10 +4,10 @@ Page({
     /**  
     * 页面配置  
     */
+    addDangerTitle: "隐患快报",
+    addDangerDesc: "企业隐患自查自报",
     winWidth: 0,
     winHeight: 0,
-    // 是否企业用户
-    isqy: true,
     // 用户类型
     yhlx: 0,
     // tab切换    
@@ -43,28 +43,31 @@ Page({
   // 点击用户头像
   userClick: function () {
     wx.navigateTo({
-      url: '../login/login'
+      url: '../login/chooseLoginType'
     })
   },
   // 点击添加隐患
   addClick: function () {
     wx.navigateTo({
-      url: '../check/firstCheck'
+      url: '../danger/addDanger'
     })
   },
   // 点击隐患列表
   listClick: function () {
-    // wx.navigateTo({
-    //   url: '../danger/dangerCheckList'
-    // })
-
-    var sourceData = null
-    //调用应用实例的方法获取全局数据
-    app.getCompanyName(null, function (companyName) {
-      sourceData = companyName
-      wx.navigateTo({
-        url: '../common/companyList?data=' + JSON.stringify(sourceData)
-      })
+    wx.navigateTo({
+      url: '../danger/dangerCheckList'
+    })
+  },
+  // 点击新建项目
+  addProjectClick: function (e) {
+    wx.navigateTo({
+      url: '../danger/addProject'
+    })
+  },
+  // 点击查看项目列表
+  projectListClick: function (e) {
+    wx.navigateTo({
+      url: '../danger/projectList?userid=' + app.globalData.userInfo.userid
     })
   },
 
@@ -83,21 +86,13 @@ Page({
       success: function (res) {
         app.globalData.userInfo = res.data
         that.setData({
+          addDangerTitle: "隐患快报",
+          addDangerDesc: "企业隐患自查自报",
           yhlx: app.globalData.userInfo.yhlx
-          // yhlx: 4
         })
-        if (app.globalData.userInfo.repIsqy == 'false') {
-          that.setData({
-            isqy: false
-          })
-        } else {
-          that.setData({
-            isqy: true
-          })
-        }
       }, fail: function (res) {
         wx.navigateTo({
-          url: '../login/login'
+          url: '../login/chooseLoginType'
         })
       }
     })

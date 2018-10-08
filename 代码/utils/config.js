@@ -24,7 +24,7 @@ var config = {
   getType: `${host}/getXx.do?action=getType`,
 
   // 隐患列表
-  getYhList: `${host}/getXx.do?action=getYhList&qyid=`,
+  getYhList: `${host}/getXx.do?action=getYhList`,
 
   // 隐患详情
   getOneYh: `${host}/getXx.do?action=getOneYh`,
@@ -71,6 +71,52 @@ var config = {
 
   // 获取区、街道（总共有3层：市、区、镇）
   getLocal: `${host}/getXx.do?action=getLocal&orgid=`,
+
+  // 获取模板隐患类别
+  getCategory: `${host}/getXx.do?action=getLb`,
+
+  // 根据模版隐患类别获取详情隐患列表
+  getDangerType: `${host}/getXx.do?action=getCjwt&lb=`,
+
+  // 获取模板隐患类别
+  getCategory: `${host}/getXx.do?action=getLb`,
+
+  // 根据模版隐患类别获取详情隐患列表
+  getDangerType: `${host}/getXx.do?action=getCjwt`,
+
+  // 获取法律法规分类
+  getLawsType: `${host}/getXx.do?action=getFgfl`,
+
+  // 根据分类获取法律法规详情文书
+  getLawsDetail: `${host}/getXx.do?action=getFlfg`,
+
+  // 法律法规内容检索
+  searchLawsInfo: `${host}/getXx.do?action=showWj`,
+
+  // 新建项目
+  createProjcet: `${host}/getXx.do?action=insertXm`,
+  // 获取项目列表
+  getProjectList: `${host}/getXx.do?action=getXmlist`,
+  // 获取项目详情
+  getProjectDetail: `${host}/getXx.do?action=getOneXm&xmid=`,
+
+  // 获取法规抓取文件
+  getGrabLaws: `${host}/getXx.do?action=getFglist`,
+
+  // 删除隐患
+  deleteYH: `${host}/getXx.do?action=delYh`,
+  // 删除项目
+  deleteProject: `${host}/getXx.do?action=delXm`,
+
+  // 获取企业列表
+  getCompanyList: `${host}/getXx.do?action=getQyList`,
+  // 新建/编辑企业
+  editCompany: `${host}/getXx.do?action=insertQy`,
+  // 删除企业
+  deleteCompany: `${host}/getXx.do?action=delQy`,
+
+  // 下载文件
+  downLoadFile: `${host}/getfile?fileid=`,
 };
 //对外把对象config返回
 module.exports = config

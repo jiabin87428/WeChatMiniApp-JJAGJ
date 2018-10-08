@@ -91,9 +91,13 @@ Page({
       prevPage.setData({
         desc: this.data.inputstring
       })
-    } else if (this.data.viewId == "law") {
+    } else if (this.data.viewId == "clause") {
       prevPage.setData({
-        law: this.data.inputstring
+        clause: this.data.inputstring
+      })
+    } else if (this.data.viewId == "clauseInfo") {
+      prevPage.setData({
+        clauseInfo: this.data.inputstring
       })
     } else if (this.data.viewId == "result") {
       prevPage.setData({

@@ -73,22 +73,16 @@ Page({
   
   },
   // 点击隐患列表
-  listClick: function (e) {
+  listClick: function () {
     if (this.data.isqy == false) {// 监管用户
       wx.navigateTo({
         url: '../manger/companyManger'
       })
     } else {// 企业用户
       wx.navigateTo({
-        url: '../application/companyInfoList?qyid=' + app.globalData.userInfo.repRecordid
+        url: '../application/companyInfoList?qyid=' + app.globalData.userInfo.userid
       })
     }
-  },
-  // 点击视频播放列表
-  vedioClick: function (e) {
-    wx.navigateTo({
-      url: '../application/vedioPlay'
-    })
   },
   // 判断是否登录
   checkLogin: function () {
@@ -113,7 +107,7 @@ Page({
         console.log(app.globalData.userInfo)
       }, fail: function (res) {
         wx.navigateTo({
-          url: '../login/login'
+          url: '../login/chooseLoginType'
         })
       }
     })

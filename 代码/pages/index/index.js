@@ -13,30 +13,31 @@ Page({
     winHeight: 0,
     // tab切换    
     currentTab: 0,
+    // 用户类型
+    yhlx: 0,
     // 顶部统计栏高度
     titleHeight: 144,
+    // 地图上的标记
+    markers: [],
+    latitude: 0,
+    longitude: 0,
+    // 当前定位地址
+    currentLocation: '尚未获得定位信息',
 
-    //------------纪杰-----------------
-    yhlx: 2,
-    // 街道id
-    orgid: '',
-    // 所选街道名称
-    orgname: '',
-    // 待办任务数
-    dbrws: '',
-    // 已办任务数
-    ybrws: '',
+    // MARK:企业用
+    // 隐患总数
+    yhzs: 0,
+    // 已整改隐患数
+    yzgyhs: 0,
+    // 未整改隐患数
+    wzgyhs: 0,
 
-    // 已查企业数
-    ycqys: '',
-    // 查出隐患总数
-    yhzs: '',
-    // 复查已整改总数
-    fcyzgzs: '',
-    // 重大隐患
-    zdyhs: '',
-    // 不配合企业
-    bphqy: '',
+    // MARK:非企业用
+    // 法律法规总数
+    flfgzs: 0,
+    // 隐患库总数
+    yhkzs: 0,
+
   },
   onLoad: function (e) {
     var that = this;
@@ -67,14 +68,14 @@ Page({
   // 点击用户头像
   userClick: function () {
     wx.navigateTo({
-      url: '../login/login'
+      url: '../login/chooseLoginType'
     })
   },
   // 点击添加隐患
   addClick: function () {
     if(!this.checkLogin()) {
       wx.navigateTo({
-        url: '../login/login'
+        url: '../login/chooseLoginType'
       })
       return
     }else{
@@ -87,7 +88,7 @@ Page({
   listClick: function () {
     if(!this.checkLogin()) {
       wx.navigateTo({
-        url: '../login/login'
+        url: '../login/chooseLoginType'
       })
       return
     } else {
@@ -104,10 +105,13 @@ Page({
       key: 'userInfo',
       success: function (res) {
         app.globalData.userInfo = res.data
+        that.setData({
+          yhlx: app.globalData.userInfo.yhlx
+        })
         that.getStatistics()
         if (app.globalData.userInfo != null) {
           var callout = {
-            content: app.globalData.userInfo.repIsqy == 'false' ? app.globalData.userInfo.name : app.globalData.userInfo.repName,
+            content: app.globalData.userInfo.name,
             color: '#FFFFFF',
             bgColor: '#018B0D',
             borderRadius: 5,
@@ -123,25 +127,19 @@ Page({
             height: 30,
             callout: callout
           }]
-          // 设置用户类型
-          that.setData({
-            yhlx: app.globalData.userInfo.yhlx
-          })
-          if (app.globalData.userInfo.repIsqy == 'false') {
+          if (app.globalData.userInfo.yhlx == '1') {
             that.setData({
-              longitude: app.globalData.userInfo.mapx,
-              latitude: app.globalData.userInfo.mapy,
-              isqy: false,
-              titleHeight: 192,
+              // longitude: app.globalData.userInfo.mapx,
+              // latitude: app.globalData.userInfo.mapy,
+              titleHeight: 116,
               markers: mark
             })
           } else {
             that.setData({
-              longitude: app.globalData.userInfo.mapx,
-              latitude: app.globalData.userInfo.mapy,
-              currentLocation: app.globalData.userInfo.address,
-              isqy: true,
-              titleHeight: 144,
+              // longitude: app.globalData.userInfo.mapx,
+              // latitude: app.globalData.userInfo.mapy,
+              currentLocation: app.globalData.userInfo.dep,
+              titleHeight: 68,
               markers: mark
             })
           }
@@ -152,7 +150,7 @@ Page({
         console.log(app.globalData.userInfo)
       }, fail: function (res) {
         wx.navigateTo({
-          url: '../login/login'
+          url: '../login/chooseLoginType'
         })
       }
     })
@@ -166,34 +164,86 @@ Page({
   getStatistics: function () {
     var that = this
     var params = {
-      "userid": app.globalData.userInfo.userid,
-      "orgid": that.data.orgid
+      "userid": app.globalData.userInfo.userid
     }
     request.requestLoading(config.getTj, params, '正在加载数据', function (res) {
       //res就是我们请求接口返回的数据
       console.log(res)
-      if (res.repCode != null && res.repCode == 500){
-        return
-      }
-      if (that.data.yhlx == "2") {// 检查人
+      var markList = that.data.markers
+
+      if (app.globalData.userInfo.yhlx == '1') {
+        for (var i = 0; i < res.list.length; i++) {
+          var item = res.list[i]
+          var callout = {
+            content: item.qymc,
+            color: '#FFFFFF',
+            bgColor: '#5490FF',
+            borderRadius: 5,
+            padding: 5,
+            display: 'ALWAYS'
+          }
+          var mark = {
+            id: item.qyid,
+            latitude: item.mapy,
+            longitude: item.mapx,
+            iconPath: '../../assets/danger_position.png',
+            width: 30,
+            height: 30,
+            callout: callout
+          }
+          markList.push(mark)
+        }
         that.setData({
-          // 待办任务数
-          dbrws: res.dbrws,
-          // 已办任务数
-          ybrws: res.ybrws
+          markers: markList,
+          flfgzs: res.flfgzs,
+          yhkzs: res.yhkzs
         })
-      }else {// 管理者、政府
+      } else {
+        for (var i = 0; i < res.list.length; i++) {
+          var item = res.list[i]
+          var color = ''
+          if (item.zgzt == '0') {// 已整改
+            color = '#0A6BDA'
+          } else if (item.zgzt == '1') {// 未整改
+            color = '#FF6B2D'
+          }else {// 草稿
+            color = '#2FD065'
+          }
+          var icon = ''
+          if (item.zgzt == '0') {// 已整改
+            icon = '../../assets/danger_done.png'
+          } else if (item.zgzt == '1') {// 未整改
+            icon = '../../assets/danger_undo.png'
+          } else {// 草稿
+            icon = '../../assets/danger_draft.png'
+          }
+
+          var callout = {
+            content: item.yhms,
+            color: '#FFFFFF',
+            bgColor: color,
+            borderRadius: 5,
+            padding: 5,
+            display: 'ALWAYS'
+          }
+          var mark = {
+            id: i,
+            latitude: item.mapy == "" ? 0 : item.mapy,
+            longitude: item.mapx == "" ? 0 : item.mapx,
+            iconPath: icon,
+            width: 30,
+            height: 30,
+            callout: callout,
+            yhid: item.yhid,
+            zgzt: item.zgzt
+          }
+          markList.push(mark)
+        }
         that.setData({
-          // 已查企业数
-          ycqys: res.ycqys,
-          // 查出隐患总数
+          markers: markList,
           yhzs: res.yhzs,
-          // 复查已整改总数
-          fcyzgzs: res.fcyzgzs,
-          // 重大隐患
-          zdyhs: res.zdyhs,
-          // 不配合企业
-          bphqy: res.bphqy,
+          yzgyhs: res.yzg,
+          wzgyhs: res.wzg
         })
       }
     }, function () {
@@ -211,6 +261,7 @@ Page({
   },
   // 获取当前位置
   getCurrentLocation: function (e) {
+    var that = this
     var myAmapFun = new amapFile.AMapWX({ key: 'f28afe6170399e78d1f7e1b672c1fa49' });
     myAmapFun.getRegeo({
       success: function (data) {
@@ -234,52 +285,24 @@ Page({
   // maker点击事件
   makertap: function (e) {
     console.log(e)
-    if (app.globalData.userInfo.repIsqy == 'false') { // 监管用户
-      if (e.markerId != '99999') { // 点击的不是监管用户本身
-        wx.navigateTo({
-          url: '../application/companyInfoList?qyid=' + e.markerId
-        })
-      }
-    }else {// 企业用户
-      if (e.markerId != '99999') { // 点击的不是企业本身的坐标点
-        var mark = this.data.markers[e.markerId+1]
-        this.getDetail(mark.yhid, mark.sfyzg)
-      }
-    }
+    // 暂时不加点击事件
+    // if (app.globalData.userInfo.yhlx == '1') { // 监管用户
+    //   if (e.markerId != '99999') { // 点击的不是监管用户本身
+    //     wx.navigateTo({
+    //       url: '../application/companyInfoList?qyid=' + e.markerId
+    //     })
+    //   }
+    // }else {// 企业用户
+    //   if (e.markerId != '99999') { // 点击的不是企业本身的坐标点
+    //     var mark = this.data.markers[e.markerId+1]
+    //     this.getDetail(mark.yhid, mark.zgzt)
+    //   }
+    // }
   },
   // 查看隐患详情
-  getDetail: function (dangerId,sfyzg) {
+  getDetail: function (dangerId,zgzt) {
     wx.navigateTo({
-      url: '../danger/dangerDetail?yhid=' + dangerId + '&sfyzg=' + sfyzg
-    })
-  },
-  /**纪杰**/
-  // 企业管理数据统计
-  getCompanyData: function () {
-    wx.navigateTo({
-      url: '../jijie/companyData'
-    })
-  },
-  
-  // 跳转区、街道选择
-  jumpLocal: function (e) {
-    var that = this
-    var viewId = e.currentTarget.id
-    var orgid = ""
-    request.requestLoading(config.getLocal + orgid, null, '正在加载数据', function (res) {
-      //res就是我们请求接口返回的数据
-      console.log(res)
-      if (res.repCode != null && res.repCode == 500) {
-        return
-      }
-      wx.navigateTo({
-        url: '../common/selectRadioList?id=' + viewId + '&data=' + JSON.stringify(res.repOrg)
-      })
-    }, function () {
-      wx.showToast({
-        title: '加载数据失败',
-        icon: 'none'
-      })
+      url: '../danger/dangerDetail?yhid=' + dangerId + '&zgzt=' + zgzt
     })
   },
 })    
