@@ -5,7 +5,7 @@
 var host = "https://www.gelure.com"  //域名要在小程序的管理平台配置好，如果出现调用时报错，无效的域名，可在微信开发工具左边点项目-》配置信息-》看一下配置的域名【request合法域名】有没有刷新下来，没有的话就点下面的刷新
 
 var config = {
- 
+
   // 下面的地址配合 Server 工作
   host,
   // 登录
@@ -53,7 +53,7 @@ var config = {
   getQyxx: `${host}/getXx.do?action=getQyxx`,
 
   //-----------纪杰------------
-  
+
   // 获取任务列表
   getRw: `${host}/getXx.do?action=getRw&`,
 
@@ -93,6 +93,9 @@ var config = {
   // 法律法规内容检索
   searchLawsInfo: `${host}/getXx.do?action=showWj`,
 
+  // 获取全部法律法规-新建隐患从法规库选择对应条款
+  getAllFlfg: `${host}/getXx.do?action=getAllFlfg`,
+
   // 新建项目
   createProjcet: `${host}/getXx.do?action=insertXm`,
   // 获取项目列表
@@ -114,6 +117,8 @@ var config = {
   editCompany: `${host}/getXx.do?action=insertQy`,
   // 删除企业
   deleteCompany: `${host}/getXx.do?action=delQy`,
+  // 重置企业密码
+  resetCompanyPassword: `${host}/getXx.do?action=resetPwd`,
 
   // 下载文件
   downLoadFile: `${host}/getfile?fileid=`,

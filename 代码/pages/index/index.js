@@ -55,7 +55,7 @@ Page({
       }
 
     });
-    
+
   },
   /**
    *  监听页面显示，
@@ -73,12 +73,12 @@ Page({
   },
   // 点击添加隐患
   addClick: function () {
-    if(!this.checkLogin()) {
+    if (!this.checkLogin()) {
       wx.navigateTo({
         url: '../login/chooseLoginType'
       })
       return
-    }else{
+    } else {
       wx.navigateTo({
         url: '../danger/addDanger'
       })
@@ -86,7 +86,7 @@ Page({
   },
   // 点击隐患列表
   listClick: function () {
-    if(!this.checkLogin()) {
+    if (!this.checkLogin()) {
       wx.navigateTo({
         url: '../login/chooseLoginType'
       })
@@ -175,7 +175,7 @@ Page({
         for (var i = 0; i < res.list.length; i++) {
           var item = res.list[i]
           var callout = {
-            content: item.qymc,
+            content: item.qymc + '(隐患总数：' + item.yhsl + ')',
             color: '#FFFFFF',
             bgColor: '#5490FF',
             borderRadius: 5,
@@ -206,7 +206,7 @@ Page({
             color = '#0A6BDA'
           } else if (item.zgzt == '1') {// 未整改
             color = '#FF6B2D'
-          }else {// 草稿
+          } else {// 草稿
             color = '#2FD065'
           }
           var icon = ''
@@ -300,7 +300,7 @@ Page({
     // }
   },
   // 查看隐患详情
-  getDetail: function (dangerId,zgzt) {
+  getDetail: function (dangerId, zgzt) {
     wx.navigateTo({
       url: '../danger/dangerDetail?yhid=' + dangerId + '&zgzt=' + zgzt
     })

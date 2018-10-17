@@ -39,7 +39,8 @@
     "pages/danger/projectSearch",
     "pages/danger/dangerSearch",
     "pages/me/companyList",
-    "pages/me/companyEdit"
+    "pages/me/companyEdit",
+    "pages/danger/clauseList"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -26,9 +26,9 @@ Page({
     // 用户类型
     yhlx: 0,
     // 提交时间
-    time:"",
+    time: "",
     // 当前位置
-    address:"",
+    address: "",
     // 企业名称
     companyName: null,
     // 隐患位置
@@ -93,7 +93,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
@@ -120,35 +120,35 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   },
   // 添加图片
   addPhoto: function () {
@@ -196,7 +196,7 @@ Page({
       for (var i = 0; i < newlist.length; i++) {
         var newItem = newlist[i]
         if (item == newItem) {
-          newlist.splice(i,1)
+          newlist.splice(i, 1)
           i--
         }
       }
@@ -205,7 +205,7 @@ Page({
       })
     }
 
-    list.splice(currentIdx,1)
+    list.splice(currentIdx, 1)
     _this.setData({
       imageList: list
     })
@@ -215,19 +215,24 @@ Page({
   },
   // 选择现场问题输入方式：通过模板选择or直接输入
   selectInputType: function (e) {
+    var viewId = e.currentTarget.id
     var that = this
     wx.showActionSheet({
-      itemList: ['从隐患库选择', '自行输入问题', '从隐患库检索'],
+      itemList: viewId == "clause" ? ['从隐患库选择', '自行输入问题', '从隐患库检索', '从法规库选择'] : ['从隐患库选择', '自行输入问题', '从隐患库检索'],
       success: function (res) {
         if (res.tapIndex == 0) {// 从模板选择
           wx.navigateTo({
             url: '../danger/dangerTypeSelect'
           })
-        } else if (res.tapIndex == 1){// 自行输入
+        } else if (res.tapIndex == 1) {// 自行输入
           that.jumpInput(e)
-        } else {// 从隐患库检索
+        } else if (res.tapIndex == 2) {// 从隐患库检索
           wx.navigateTo({
             url: '../danger/dangerDetailSelect'
+          })
+        } else {// 法规库选择
+          wx.navigateTo({
+            url: '../danger/clauseList'
           })
         }
       },
@@ -360,7 +365,7 @@ Page({
         })
         if (that.data.newaddImagelist.length > 0) {
           that.submitImage()
-        }else {
+        } else {
           wx.showToast({
             title: res.repMsg,
             complete: setTimeout(function () {
@@ -383,7 +388,7 @@ Page({
     })
   },
   // 提交图片事件
-  submitImage: function() {
+  submitImage: function () {
     app.uploadDIY('?yhid=' + this.data.dangerId + '&zptype=zgqzp', this.data.newaddImagelist, 0, 0, 0, this.data.newaddImagelist.length, function (resultCode) {
       if (resultCode == '200') {
         wx.showToast({
@@ -398,7 +403,7 @@ Page({
     })
   },
   // 高德地图获取当前地址
-  getCurrentAddress: function() {
+  getCurrentAddress: function () {
     var that = this;
     var myAmapFun = new amapFile.AMapWX({ key: 'f28afe6170399e78d1f7e1b672c1fa49' });
     myAmapFun.getRegeo({
@@ -406,8 +411,8 @@ Page({
         if (data.length > 0) {
           let item = data[0]
           console.log(item.name)
-          that.setData ({
-            address:item.name
+          that.setData({
+            address: item.name
           })
         }
       },
@@ -439,7 +444,7 @@ Page({
       if (this.data.companyName == null) {
         showText = "请选择企业"
       }
-    } 
+    }
 
     if (showText != "") {
       wx.showToast({
@@ -447,7 +452,7 @@ Page({
         icon: 'none'
       })
       return false
-    }else {
+    } else {
       return true
     }
   },
@@ -523,7 +528,7 @@ Page({
           time: res.tjsj,
           // 完成高清图
           imageList: bigImgList,
-          date:res.zgqx
+          date: res.zgqx
         });
         var num = 1
         if (that.data.yhzt == "0") {
