@@ -35,6 +35,10 @@ Page({
     xmzt: "",
     // 企业名称
     qymc: "",
+    // 隐患级别
+    yhjb: "",
+    // 隐患分类
+    yhfl: "",    
     // 问题描述
     wtms: "",
     // 法律依据
@@ -170,6 +174,10 @@ Page({
           qyid: res.qyid,
           // 企业名称
           qymc: res.qymc,
+          // 隐患级别
+          yhjb: res.yhjb,
+          // 隐患分类
+          yhfl: res.yhfl,
           // 问题描述
           wtms: res.wtms,
           // 对应条款

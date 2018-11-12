@@ -6,6 +6,14 @@
     <text class='flex-item cellText2'>{{qymc}}</text>
   </view>
   <view id='3' class='scrollItem'>
+    <text class='cellText1'>隐患级别</text>
+    <text class='flex-item cellText2'>{{yhjb}}</text>
+  </view>
+  <view id='3' class='scrollItem'>
+    <text class='cellText1'>隐患分类</text>
+    <text class='flex-item cellText2'>{{yhfl}}</text>
+  </view>
+  <view id='3' class='scrollItem'>
     <text class='cellText1'>问题描述</text>
     <text class='flex-item cellText2'>{{wtms}}</text>
   </view>

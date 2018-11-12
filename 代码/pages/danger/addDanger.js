@@ -34,6 +34,10 @@ Page({
     // 隐患位置
     latitude: "0",
     longitude: "0",
+    // 隐患级别
+    level: "一般隐患",
+    // 隐患分类
+    classify: "",
     // 隐患描述
     desc: "",
     // 对应条款
@@ -213,6 +217,48 @@ Page({
       imageViewHeight: Math.ceil((_this.data.imageList.length + 1) / 4) * (_this.data.littleImageWidth + 8)
     })
   },
+  // 选择隐患级别
+  selectLevel: function (e) {
+    var viewId = e.currentTarget.id
+    var that = this
+    wx.showActionSheet({
+      itemList: ['一般隐患', '重大隐患'],
+      success: function (res) {
+        if (res.tapIndex == 0) {// 一般隐患
+          that.setData ({
+            level: '一般隐患'
+          })
+        } else if (res.tapIndex == 1) {// 重大隐患
+          that.setData({
+            level: '重大隐患'
+          })
+        }
+      },
+      fail: function (res) {
+        console.log(res.errMsg)
+      }
+    })
+  },
+  // 选择隐患分类
+  selectClassify: function (e) {
+    var viewId = e.currentTarget.id
+    var that = this
+    wx.showActionSheet({
+      itemList: ['自行输入分类', '从分类库选择'],
+      success: function (res) {
+        if (res.tapIndex == 0) {// 自行输入分类
+          that.jumpInput(e)
+        } else if (res.tapIndex == 1) {// 从隐患库检索
+          wx.navigateTo({
+            url: '../danger/dangerClassify'
+          })
+        }
+      },
+      fail: function (res) {
+        console.log(res.errMsg)
+      }
+    })
+  },
   // 选择现场问题输入方式：通过模板选择or直接输入
   selectInputType: function (e) {
     var viewId = e.currentTarget.id
@@ -264,7 +310,10 @@ Page({
     } else if (viewId == "advise") {
       placeholder = "请输入整改建议"
       inputstring = this.data.advise
-    }
+    } else if (viewId == "classify") {
+      placeholder = "请输入隐患分类"
+      inputstring = this.data.classify
+    } 
     wx.navigateTo({
       url: '../common/inputPage?id=' + viewId + '&placeholder=' + placeholder + '&inputstring=' + inputstring
     })
@@ -342,6 +391,8 @@ Page({
       "userid": app.globalData.userInfo.userid,
       "qyid": qyid,
       "qymc": companyName,
+      "yhjb": this.data.level,
+      "yhfl": this.data.classify,
       "wtms": this.data.desc,
       "dytk": this.data.clause,
       "zglx": this.data.rectifyType.name,

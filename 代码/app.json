@@ -40,7 +40,10 @@
     "pages/danger/dangerSearch",
     "pages/me/companyList",
     "pages/me/companyEdit",
-    "pages/danger/clauseList"
+    "pages/danger/clauseList",
+    "pages/check/editPage",
+    "pages/check/safetyManage",
+    "pages/danger/dangerClassify"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -76,13 +76,10 @@ var config = {
   getCategory: `${host}/getXx.do?action=getLb`,
 
   // 根据模版隐患类别获取详情隐患列表
-  getDangerType: `${host}/getXx.do?action=getCjwt&lb=`,
-
-  // 获取模板隐患类别
-  getCategory: `${host}/getXx.do?action=getLb`,
-
-  // 根据模版隐患类别获取详情隐患列表
   getDangerType: `${host}/getXx.do?action=getCjwt`,
+
+  // 获取隐患分类
+  getDangerClassify: `${host}/getXx.do?action=getYhfl`,
 
   // 获取法律法规分类
   getLawsType: `${host}/getXx.do?action=getFgfl`,
