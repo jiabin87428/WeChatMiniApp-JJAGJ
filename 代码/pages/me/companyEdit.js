@@ -56,6 +56,9 @@ Page({
         address: item.qydz,
         zyfzr: item.zyfzr,
         zyfzrdh: item.zyfzrdh,
+        province: item.province,
+        city: item.city,
+        district: item.district,
       })
     }
   },
