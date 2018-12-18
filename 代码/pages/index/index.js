@@ -131,7 +131,7 @@ Page({
             that.setData({
               // longitude: app.globalData.userInfo.mapx,
               // latitude: app.globalData.userInfo.mapy,
-              titleHeight: 116,
+              titleHeight: 144,
               markers: mark
             })
           } else {
@@ -169,82 +169,83 @@ Page({
     request.requestLoading(config.getTj, params, '正在加载数据', function (res) {
       //res就是我们请求接口返回的数据
       console.log(res)
-      var markList = that.data.markers
+      if (res.repCode == "200") {
+        var markList = that.data.markers
+        if (app.globalData.userInfo.yhlx == '1') {
+          for (var i = 0; i < res.list.length; i++) {
+            var item = res.list[i]
+            var callout = {
+              content: item.qymc + '(隐患总数：' + item.yhsl + ')',
+              color: '#FFFFFF',
+              bgColor: '#5490FF',
+              borderRadius: 5,
+              padding: 5,
+              display: 'ALWAYS'
+            }
+            var mark = {
+              id: item.qyid,
+              latitude: item.mapy,
+              longitude: item.mapx,
+              iconPath: '../../assets/danger_position.png',
+              width: 30,
+              height: 30,
+              callout: callout
+            }
+            markList.push(mark)
+          }
+          that.setData({
+            markers: markList,
+            flfgzs: res.flfgzs,
+            yhkzs: res.yhkzs
+          })
+        } else {
+          for (var i = 0; i < res.list.length; i++) {
+            var item = res.list[i]
+            var color = ''
+            if (item.zgzt == '0') {// 已整改
+              color = '#0A6BDA'
+            } else if (item.zgzt == '1') {// 未整改
+              color = '#FF6B2D'
+            } else {// 草稿
+              color = '#2FD065'
+            }
+            var icon = ''
+            if (item.zgzt == '0') {// 已整改
+              icon = '../../assets/danger_done.png'
+            } else if (item.zgzt == '1') {// 未整改
+              icon = '../../assets/danger_undo.png'
+            } else {// 草稿
+              icon = '../../assets/danger_draft.png'
+            }
 
-      if (app.globalData.userInfo.yhlx == '1') {
-        for (var i = 0; i < res.list.length; i++) {
-          var item = res.list[i]
-          var callout = {
-            content: item.qymc + '(隐患总数：' + item.yhsl + ')',
-            color: '#FFFFFF',
-            bgColor: '#5490FF',
-            borderRadius: 5,
-            padding: 5,
-            display: 'ALWAYS'
+            var callout = {
+              content: item.yhms,
+              color: '#FFFFFF',
+              bgColor: color,
+              borderRadius: 5,
+              padding: 5,
+              display: 'ALWAYS'
+            }
+            var mark = {
+              id: i,
+              latitude: item.mapy == "" ? 0 : item.mapy,
+              longitude: item.mapx == "" ? 0 : item.mapx,
+              iconPath: icon,
+              width: 30,
+              height: 30,
+              callout: callout,
+              yhid: item.yhid,
+              zgzt: item.zgzt
+            }
+            markList.push(mark)
           }
-          var mark = {
-            id: item.qyid,
-            latitude: item.mapy,
-            longitude: item.mapx,
-            iconPath: '../../assets/danger_position.png',
-            width: 30,
-            height: 30,
-            callout: callout
-          }
-          markList.push(mark)
+          that.setData({
+            markers: markList,
+            yhzs: res.yhzs,
+            yzgyhs: res.yzg,
+            wzgyhs: res.wzg
+          })
         }
-        that.setData({
-          markers: markList,
-          flfgzs: res.flfgzs,
-          yhkzs: res.yhkzs
-        })
-      } else {
-        for (var i = 0; i < res.list.length; i++) {
-          var item = res.list[i]
-          var color = ''
-          if (item.zgzt == '0') {// 已整改
-            color = '#0A6BDA'
-          } else if (item.zgzt == '1') {// 未整改
-            color = '#FF6B2D'
-          } else {// 草稿
-            color = '#2FD065'
-          }
-          var icon = ''
-          if (item.zgzt == '0') {// 已整改
-            icon = '../../assets/danger_done.png'
-          } else if (item.zgzt == '1') {// 未整改
-            icon = '../../assets/danger_undo.png'
-          } else {// 草稿
-            icon = '../../assets/danger_draft.png'
-          }
-
-          var callout = {
-            content: item.yhms,
-            color: '#FFFFFF',
-            bgColor: color,
-            borderRadius: 5,
-            padding: 5,
-            display: 'ALWAYS'
-          }
-          var mark = {
-            id: i,
-            latitude: item.mapy == "" ? 0 : item.mapy,
-            longitude: item.mapx == "" ? 0 : item.mapx,
-            iconPath: icon,
-            width: 30,
-            height: 30,
-            callout: callout,
-            yhid: item.yhid,
-            zgzt: item.zgzt
-          }
-          markList.push(mark)
-        }
-        that.setData({
-          markers: markList,
-          yhzs: res.yhzs,
-          yzgyhs: res.yzg,
-          wzgyhs: res.wzg
-        })
       }
     }, function () {
       wx.showToast({

@@ -7,6 +7,23 @@
       <text class='cellText2'>{{yhzs}}/{{yzgyhs}}/{{wzgyhs}}</text>
     </view>
   </view>
+  <view class="subBaseView5" wx:elif="{{yhlx == 1}}">
+    <view class='scrollItem'>
+      <image class="point" src="../../assets/point_green.png" mode="aspectFit"></image>
+      <text class='cellText1'>监管范围内企业数</text>
+      <text class='cellText2'>{{yhkzs}}</text>
+    </view>
+    <view class='scrollItem'>
+      <image class="point" src="../../assets/point_yellow.png" mode="aspectFit"></image>
+      <text class='cellText1'>监管范围内企业检查出隐患总数</text>
+      <text class='cellText2'>{{flfgzs}}</text>
+    </view>
+    <view class='scrollItem'>
+      <image class="point" src="../../assets/point_yellow.png" mode="aspectFit"></image>
+      <text class='cellText1'>监管范围内企业已整改隐患总数</text>
+      <text class='cellText2'>{{flfgzs}}</text>
+    </view>
+  </view>
   <view class="subBaseView4" wx:else>
     <view class='scrollItem'>
       <image class="point" src="../../assets/point_green.png" mode="aspectFit"></image>

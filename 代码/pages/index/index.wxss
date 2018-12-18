@@ -27,6 +27,14 @@
   margin-top: 0px;
 }
 
+.subBaseView5 {
+  height: 144px; 
+  width: 100%;
+  display:flex;
+  flex-direction:column;
+  margin-top: 0px;
+}
+
 .subBaseView2 {
   position: absolute; 
   height: 20px; 
@@ -108,7 +116,7 @@
   font-size: 14px;
   color: #696969;
   margin-right: 20px;
-  width: 100%;
+  width: 50px;
   text-align: right;
 }
 
