@@ -6,28 +6,28 @@
   </view> -->
   <view class="searchView">
     <view id='0' class='tapBarItem' wx:if="{{currentTab != 0}}" bindtap='changeTap'>
-      <text class='tapText1'>全部</text>
+      <text class='tapText1'>全部({{allsl}})</text>
     </view>
     <view id='0' class='tapBarItem2' wx:if="{{currentTab == 0}}" bindtap='changeTap'>
-      <text class='tapText2'>全部</text>
+      <text class='tapText2'>全部({{allsl}})</text>
     </view>
     <view id='1' class='tapBarItem' wx:if="{{currentTab != 1}}" bindtap='changeTap'>
-      <text class='tapText1'>未整改</text>
+      <text class='tapText1'>未整改({{wzgsl}})</text>
     </view>
     <view id='1' class='tapBarItem2' wx:if="{{currentTab == 1}}" bindtap='changeTap'>
-      <text class='tapText2'>未整改</text>
+      <text class='tapText2'>未整改({{wzgsl}})</text>
     </view>    
     <view id='2' class='tapBarItem' wx:if="{{currentTab != 2}}" bindtap='changeTap'>
-      <text class='tapText1'>已整改</text>
+      <text class='tapText1'>已整改({{yzgsl}})</text>
     </view>
     <view id='2' class='tapBarItem2' wx:if="{{currentTab == 2}}" bindtap='changeTap'>
-      <text class='tapText2'>已整改</text>
+      <text class='tapText2'>已整改({{yzgsl}})</text>
     </view>
     <view id='3' class='tapBarItem' wx:if="{{currentTab != 3}}" bindtap='changeTap'>
-      <text class='tapText1'>草稿</text>
+      <text class='tapText1'>草稿({{cgsl}})</text>
     </view>
     <view id='3' class='tapBarItem2' wx:if="{{currentTab == 3}}" bindtap='changeTap'>
-      <text class='tapText2'>草稿</text>
+      <text class='tapText2'>草稿({{cgsl}})</text>
     </view>
     <view class='searchItem' bindtap='jumpDangerSearch'>
       <image class="searchIcon" src="../../assets/search.png" mode="widthFix"></image>

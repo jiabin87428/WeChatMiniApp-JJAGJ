@@ -19,7 +19,12 @@ Page({
     item: null,
 
     editIndex: 0,
-    delBtnWidth: 80//删除按钮宽度单位（rpx）
+    delBtnWidth: 80,//删除按钮宽度单位（rpx）
+    
+    allsl: 0,
+    cgsl: 0,
+    wzgsl:0,
+    yzgsl: 0,
   },
 
   /**
@@ -171,7 +176,11 @@ Page({
       console.log(res)
       if (res.repYhList != null) {
         that.setData({
-          dangerList: res.repYhList
+          dangerList: res.repYhList,
+          allsl: res.allsl,
+          cgsl: res.cgsl,
+          wzgsl: res.wzgsl,
+          yzgsl: res.yzgsl,
         })
       }else {
         wx.showToast({

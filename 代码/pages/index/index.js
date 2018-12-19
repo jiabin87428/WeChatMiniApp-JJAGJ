@@ -1,4 +1,4 @@
-
+var util = require('../../utils/util.js');
 var request = require('../../utils/request.js')
 var config = require('../../utils/config.js')
 var amapFile = require('../../libs/amap-wx.js');
@@ -38,6 +38,12 @@ Page({
     // 隐患库总数
     yhkzs: 0,
 
+    // MARK:监管用户用
+    qysl: 0,
+    yhzs: 0,
+    yzg: 0,
+    startDate: "",
+    endDate: ""
   },
   onLoad: function (e) {
     var that = this;
@@ -53,7 +59,14 @@ Page({
           winHeight: res.windowHeight
         });
       }
+    });
 
+    // 调用函数时，传入new Date()参数，返回值是日期和时间  
+    var time = util.formatDate(new Date());
+    // 再通过setData更改Page()里面的data，动态更新页面的数据  
+    this.setData({
+      startDate: time,
+      endDate: time
     });
 
   },
@@ -97,6 +110,20 @@ Page({
       })
     }
   },
+  // 开始时间变更
+  startDateChange: function (e) {
+    this.setData({
+      startDate: e.detail.value
+    })
+    this.getStatistics()
+  },
+  // 结束时间变更
+  endDateChange: function (e) {
+    this.setData({
+      endDate: e.detail.value
+    })
+    this.getStatistics()
+  },
 
   // 判断是否登录
   checkLogin: function () {
@@ -131,7 +158,7 @@ Page({
             that.setData({
               // longitude: app.globalData.userInfo.mapx,
               // latitude: app.globalData.userInfo.mapy,
-              titleHeight: 144,
+              titleHeight: 192,
               markers: mark
             })
           } else {
@@ -164,7 +191,9 @@ Page({
   getStatistics: function () {
     var that = this
     var params = {
-      "userid": app.globalData.userInfo.userid
+      "userid": app.globalData.userInfo.userid,
+      "beginTime": that.data.yhlx == "1" ? that.data.startDate : "",
+      "endTime": that.data.yhlx == "1" ? that.data.endDate : "",
     }
     request.requestLoading(config.getTj, params, '正在加载数据', function (res) {
       //res就是我们请求接口返回的数据
@@ -195,8 +224,11 @@ Page({
           }
           that.setData({
             markers: markList,
-            flfgzs: res.flfgzs,
-            yhkzs: res.yhkzs
+            flfgzs: res.flfgzs == null ? 0 : res.flfgzs,
+            yhkzs: res.yhkzs == null ? 0 : res.yhkzs,
+            qysl: res.qysl == null ? 0 : res.qysl,
+            yhzs: res.yhzs == null ? 0 : res.yhzs,
+            yzg: res.yzg == null ? 0 : res.yzg,
           })
         } else {
           for (var i = 0; i < res.list.length; i++) {
@@ -284,8 +316,11 @@ Page({
     })
   },
   // maker点击事件
-  makertap: function (e) {
-    console.log(e)
+  markertap(e) {
+    wx.showToast({
+      title: e.markerId + "",
+      icon: 'none'
+    })
     // 暂时不加点击事件
     // if (app.globalData.userInfo.yhlx == '1') { // 监管用户
     //   if (e.markerId != '99999') { // 点击的不是监管用户本身
