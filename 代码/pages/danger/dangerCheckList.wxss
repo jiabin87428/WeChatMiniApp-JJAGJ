@@ -154,10 +154,12 @@
 
 .tapText1 {
   color: #A7A7A7;
+  font-size: 12px;
 }
 
 .tapText2 {
   color: #2D68AA;
+  font-size: 12px;
 }
 
 .searchItem {

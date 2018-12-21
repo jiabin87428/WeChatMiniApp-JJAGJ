@@ -158,6 +158,13 @@ Page({
             that.setData({
               // longitude: app.globalData.userInfo.mapx,
               // latitude: app.globalData.userInfo.mapy,
+              titleHeight: 116,
+              markers: mark
+            })
+          } else if (app.globalData.userInfo.yhlx == '2') {
+            that.setData({
+              // longitude: app.globalData.userInfo.mapx,
+              // latitude: app.globalData.userInfo.mapy,
               titleHeight: 192,
               markers: mark
             })
@@ -200,7 +207,7 @@ Page({
       console.log(res)
       if (res.repCode == "200") {
         var markList = that.data.markers
-        if (app.globalData.userInfo.yhlx == '1') {
+        if (app.globalData.userInfo.yhlx == '1' || app.globalData.userInfo.yhlx == '2') {
           for (var i = 0; i < res.list.length; i++) {
             var item = res.list[i]
             var callout = {
@@ -263,7 +270,7 @@ Page({
               latitude: item.mapy == "" ? 0 : item.mapy,
               longitude: item.mapx == "" ? 0 : item.mapx,
               iconPath: icon,
-              width: 30,
+              width: 22,
               height: 30,
               callout: callout,
               yhid: item.yhid,
@@ -317,11 +324,11 @@ Page({
   },
   // maker点击事件
   markertap(e) {
-    wx.showToast({
-      title: e.markerId + "",
-      icon: 'none'
-    })
-    // 暂时不加点击事件
+    // wx.showToast({
+    //   title: e.markerId + "",
+    //   icon: 'none'
+    // })
+    //暂时不加点击事件
     // if (app.globalData.userInfo.yhlx == '1') { // 监管用户
     //   if (e.markerId != '99999') { // 点击的不是监管用户本身
     //     wx.navigateTo({
@@ -334,6 +341,22 @@ Page({
     //     this.getDetail(mark.yhid, mark.zgzt)
     //   }
     // }
+  },
+  // 气泡点击事件
+  callouttap(e){
+    if (app.globalData.userInfo.yhlx == "0"){ // 企业用户
+      if (e.markerId != '99999') { // 点击的不是企业本身的坐标点
+        var mark = this.data.markers[e.markerId + 1]
+        this.getDetail(mark.yhid, mark.zgzt)
+      }
+    } else if (app.globalData.userInfo.yhlx == "2") {// 监管(政府)
+      var item = {
+        qyid: e.markerId + ""
+      }
+      wx.navigateTo({
+        url: '../danger/dangerCheckList?item=' + JSON.stringify(item) + '&pageType=1'
+      })
+    }
   },
   // 查看隐患详情
   getDetail: function (dangerId, zgzt) {

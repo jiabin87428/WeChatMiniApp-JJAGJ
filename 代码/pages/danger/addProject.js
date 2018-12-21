@@ -159,7 +159,7 @@ Page({
   // 隐患处理
   jumpDanger: function (e) {
     wx.navigateTo({
-      url: '../danger/dangerCheckList?item=' + JSON.stringify(this.data.item)
+      url: '../danger/dangerCheckList?item=' + JSON.stringify(this.data.item) + '&pageType=0'
     })
   },
   // 新建隐患

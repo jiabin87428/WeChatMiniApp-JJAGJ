@@ -8,6 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // 0-正常检查人用户通过隐患排查进入的
+    // 1-监管用户通过首页点击企业进入的
+    pageType: 0,
     scrollHeight: 0,
     // 隐患列表
     dangerList: [],
@@ -15,6 +18,8 @@ Page({
     currentTab: 0,
     // 项目id
     xmid: "",
+    // 企业id-政府首页点击坐标进来加载隐患使用
+    qyid: "",
     // 项目item
     item: null,
 
@@ -32,11 +37,18 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    var item = JSON.parse(options.item)
+    var item = options.item == null ? null : JSON.parse(options.item)
+    var pageType = options.pageType
+    if (pageType != null) {
+      that.setData({
+        pageType: pageType
+      })
+    }
     if (item != null) {
       that.setData({
         item: item,
-        xmid: item.xmid
+        xmid: item.xmid == null ? "" : item.xmid,
+        qyid: item.qyid == null ? "" : item.qyid
       })
     }
     wx.getSystemInfo({
@@ -61,9 +73,17 @@ Page({
    */
   onShow: function () {
     var that = this
-    var params = {
-      "userid": app.globalData.userInfo.userid,
-      "xmid": that.data.xmid
+    var params = {}
+    if (that.data.pageType == 0) {
+      params = {
+        "userid": app.globalData.userInfo.userid,
+        "xmid": that.data.xmid
+      }
+    } else {
+      params = {
+        "userid": app.globalData.userInfo.userid,
+        "qyid": that.data.qyid
+      }
     }
     if (that.data.currentTab == 1) {
       params["yhzt"] = "1"
@@ -117,9 +137,17 @@ Page({
       currentTab: viewId
     })
 
-    var params = {
-      "userid": app.globalData.userInfo.userid,
-      "xmid": that.data.xmid
+    var params = {}
+    if (that.data.pageType == 0) {
+      params = {
+        "userid": app.globalData.userInfo.userid,
+        "xmid": that.data.xmid
+      }
+    }else {
+      params = {
+        "userid": app.globalData.userInfo.userid,
+        "qyid": that.data.qyid
+      }
     }
     if (that.data.currentTab == 1) {
       params["yhzt"] = "1"
@@ -171,8 +199,14 @@ Page({
   // 获取隐患列表
   reqDangerList: function (searchObj, cb) {
     var that = this
+    var loadUrl = ""
+    if (that.data.pageType == 0) {
+      loadUrl = config.getYhList
+    }else {
+      loadUrl = config.getQyyhList
+    }
     //调用接口
-    request.requestLoading(config.getYhList, searchObj, '正在加载数据', function (res) {
+    request.requestLoading(loadUrl, searchObj, '正在加载数据', function (res) {
       console.log(res)
       if (res.repYhList != null) {
         that.setData({

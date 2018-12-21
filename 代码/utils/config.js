@@ -26,6 +26,9 @@ var config = {
   // 隐患列表
   getYhList: `${host}/getXx.do?action=getYhList`,
 
+  // 获取企业隐患列表
+  getQyyhList: `${host}/getXx.do?action=getQyyhList`,
+
   // 隐患详情
   getOneYh: `${host}/getXx.do?action=getOneYh`,
 
