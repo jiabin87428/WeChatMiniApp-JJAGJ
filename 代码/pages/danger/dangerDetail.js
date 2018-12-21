@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    editable: true,
     yhzt: "",
     qyid: "",
     yhid: "",
@@ -73,9 +74,11 @@ Page({
 
     var yhid = options.yhid
     var yhzt = options.yhzt
+    var editable = options.editable == null ? true : false
     this.setData({
       yhid: yhid,
-      yhzt: yhzt
+      yhzt: yhzt,
+      editable: editable
     })
 
     this.getDetail()
@@ -235,7 +238,7 @@ Page({
   },
   // 添加图片
   addPhoto: function () {
-    if (this.data.xmzt == '1') {
+    if (this.data.xmzt == '1' && this.data.editable == false) {
       return
     }
     var _this = this;
@@ -262,6 +265,9 @@ Page({
   },
   // 删除图片
   deleteImage: function (e) {
+    if (this.data.editable == false) {
+      return
+    }
     var _this = this
     var currentIdx = e.currentTarget.id;
     var list = _this.data.wcImageList;
@@ -275,6 +281,9 @@ Page({
   },
   // 跳转输入页面
   jumpInput: function (e) {
+    if (this.data.editable == false) {
+      return
+    }
     if (this.data.xmzt == '1') {
       return
     }

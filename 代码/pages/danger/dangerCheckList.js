@@ -12,6 +12,7 @@ Page({
     // 1-监管用户通过首页点击企业进入的
     pageType: 0,
     scrollHeight: 0,
+    bottomHeight: 70, // 底部按钮位置，如果不能新建隐患，则置为0
     // 隐患列表
     dangerList: [],
     // 当前选中tab页 0-全部 1-未整改 2-已整改 3-草稿
@@ -50,6 +51,11 @@ Page({
         xmid: item.xmid == null ? "" : item.xmid,
         qyid: item.qyid == null ? "" : item.qyid
       })
+    }
+    if(that.pageType == 1) {
+      bottomHeight = 0
+    }else {
+      bottomHeight = 70
     }
     wx.getSystemInfo({
       success: function (res) {
@@ -191,8 +197,9 @@ Page({
         url: '../danger/addDanger?item=' + JSON.stringify(e.currentTarget.dataset.item)
       })
     }else {// 已整改 未整改
+      var editable = this.data.pageType == 0 ? true : false
       wx.navigateTo({
-        url: '../danger/dangerDetail?yhid=' + e.currentTarget.dataset.id + '&yhzt=' + e.currentTarget.dataset.name
+        url: '../danger/dangerDetail?yhid=' + e.currentTarget.dataset.id + '&yhzt=' + e.currentTarget.dataset.name + '&editable=' + editable
       })
     }
   },
