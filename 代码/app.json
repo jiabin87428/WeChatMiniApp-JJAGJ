@@ -43,7 +43,8 @@
     "pages/danger/clauseList",
     "pages/check/editPage",
     "pages/check/safetyManage",
-    "pages/danger/dangerClassify"
+    "pages/danger/dangerClassify",
+    "pages/me/changePassword"
   ],
   "window": {
     "backgroundTextStyle": "light",
