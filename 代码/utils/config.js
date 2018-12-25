@@ -122,6 +122,8 @@ var config = {
   deleteCompany: `${host}/getXx.do?action=delQy`,
   // 重置企业密码
   resetCompanyPassword: `${host}/getXx.do?action=resetPwd`,
+  // 获取企业报告
+  getBgList: `${host}/getXx.do?action=getBgList`,
 
   // 下载文件
   downLoadFile: `${host}/getfile?fileid=`,

@@ -44,7 +44,8 @@
     "pages/check/editPage",
     "pages/check/safetyManage",
     "pages/danger/dangerClassify",
-    "pages/me/changePassword"
+    "pages/me/changePassword",
+    "pages/me/companyReportList"
   ],
   "window": {
     "backgroundTextStyle": "light",
