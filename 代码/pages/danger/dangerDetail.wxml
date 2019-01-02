@@ -5,21 +5,25 @@
     <text class='cellText1'>企业名称</text>
     <text class='flex-item cellText2'>{{qymc}}</text>
   </view>
-  <view id='3' class='scrollItem'>
+  <view id='3' class='scrollItem' bindtap='selectLevel'>
     <text class='cellText1'>隐患级别</text>
     <text class='flex-item cellText2'>{{yhjb}}</text>
+    <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit" wx:if="{{yhlx == 3}}"></image> 
   </view>
   <view id='3' class='scrollItem'>
     <text class='cellText1'>隐患分类</text>
     <text class='flex-item cellText2'>{{yhfl}}</text>
+    <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit" wx:if="{{yhlx == 3}}"></image>
   </view>
   <view id='3' class='scrollItem'>
-    <text class='cellText1'>问题描述</text>
+    <text class='cellText1'>隐患描述</text>
     <text class='flex-item cellText2'>{{wtms}}</text>
+    <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit" wx:if="{{yhlx == 3}}"></image>
   </view>
   <view id='clause' class='scrollItem'>
     <text class='cellText1'>对应条款</text>
     <text class='cellText2'>{{clause}}</text>
+    <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit" wx:if="{{yhlx == 3}}"></image>
   </view>
   <view class='imageBaseView' style='height:{{58+imageViewHeight}}px;'>
     <view class='titleView'>
@@ -37,14 +41,17 @@
   <view id='6' class='scrollItem'>
     <text class='cellText1'>整改建议</text>
     <text class='flex-item cellText2'>{{zgjy}}</text>
+    <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit" wx:if="{{yhlx == 3}}"></image>
   </view>
   <view id='7' class='scrollItem'>
     <text class='cellText1'>提交时间</text>
     <text class='cellText2'>{{tjsj}}</text>
+    <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit" wx:if="{{yhlx == 3}}"></image>
   </view>
   <view id='7' class='scrollItem'>
     <text class='cellText1'>整改期限</text>
     <text class='cellText2'>{{zgqx}}</text>
+    <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit" wx:if="{{yhlx == 3}}"></image>
   </view>
   <view id='zgr' class='scrollItem' bindtap='jumpInput'>
     <text class='cellText1'>整改人</text>
@@ -91,6 +98,7 @@
     <image class="arrow" src="" mode="aspectFit" wx:else></image> 
   </view>
   <view id='9' class='scrollButtonItem' wx:if="{{xmzt != '1' && editable == true}}">
+  <button class='submitButton' bindtap="saveClick" wx:if="{{yhzt != '0' && yhlx == 3}}">提交</button>
     <button class='submitButton' bindtap="submitClick" wx:if="{{yhzt != '0'}}">隐患完成整改</button>
   </view>
 </scroll-view>

@@ -14,6 +14,7 @@ Page({
     yhzt: "",
     qyid: "",
     yhid: "",
+    yhlx: 0,
     // 缩略图
     imageList: [],
     // 高清图
@@ -78,7 +79,8 @@ Page({
     this.setData({
       yhid: yhid,
       yhzt: yhzt,
-      editable: editable
+      editable: editable,
+      yhlx: app.globalData.userInfo.yhlx,
     })
 
     this.getDetail()
@@ -365,6 +367,30 @@ Page({
             })
           }, 1500)
         })
+      }
+    })
+  },
+
+  // -------------管理用户编辑-------------
+  // 选择隐患级别
+  selectLevel: function (e) {
+    var viewId = e.currentTarget.id
+    var that = this
+    wx.showActionSheet({
+      itemList: ['一般隐患', '重大隐患'],
+      success: function (res) {
+        if (res.tapIndex == 0) {// 一般隐患
+          that.setData({
+            yhjb: '一般隐患'
+          })
+        } else if (res.tapIndex == 1) {// 重大隐患
+          that.setData({
+            yhjb: '重大隐患'
+          })
+        }
+      },
+      fail: function (res) {
+        console.log(res.errMsg)
       }
     })
   },
