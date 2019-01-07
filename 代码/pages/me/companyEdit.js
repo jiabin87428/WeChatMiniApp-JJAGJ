@@ -37,6 +37,9 @@ Page({
 
     // 基本信息和安全管理信息对象
     baseAndSaftyObj: {},
+
+    // 账号列表
+    zhlist: []
   },
 
   /**
@@ -66,6 +69,7 @@ Page({
         city: item.city,
         district: item.district,
         fxdj: item.fxdj,
+        zhlist: item.zhlist
       })
       var level = ""
       if (item.fxdj == 'A(红色)') {
@@ -304,6 +308,15 @@ Page({
       wx.showToast({
         title: '重置密码失败',
       })
+    })
+  },
+
+
+  // 跳转企业账号页面
+  jumpAccount: function (e) {
+
+    wx.navigateTo({
+      url: '../me/companyAccounts?qyid=' + this.data.qyid + '&zhlist=' + JSON.stringify(this.data.zhlist)
     })
   },
 })
