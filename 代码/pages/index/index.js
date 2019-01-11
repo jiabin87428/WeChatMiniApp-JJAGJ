@@ -438,4 +438,8 @@ Page({
       url: '../me/companyList?userid=' + app.globalData.userInfo.userid + '&addable=false&pagetype=' + pagetype
     })
   },
+  // map视野发生变化时触发
+  regionchange(e) {
+    console.log(e.type)
+  },
 })    
