@@ -221,7 +221,8 @@ Page({
       //res就是我们请求接口返回的数据
       // console.log(res)
       if (res.repCode == "200") {
-        var markList = that.data.markers
+        // var markList = that.data.markers
+        var markList = []
         if (app.globalData.userInfo.yhlx == '1' || app.globalData.userInfo.yhlx == '2' || app.globalData.userInfo.yhlx == '3') {
           if (res.sxqy != null && res.sxqy != "") {
             var sxlongitude = 0
