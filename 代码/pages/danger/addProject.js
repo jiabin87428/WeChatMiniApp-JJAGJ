@@ -39,21 +39,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (options.item != null) {
-      var item = JSON.parse(options.item)
-      var companyObj = {
-        "name": item.qymc,
-        "id": item.qyid
-      }
+    if (options.xmid != null) {
+      var xmid = options.xmid
       this.setData({
-        item: item,
-        companyName: companyObj,
-        projectName: item.xmmc,
-        projectNumber: item.xmbh,
-        projectInCharge: item.xmfzr,
-        xmid: item.xmid,
-        xmzt: item.xmzt,
+        xmid: xmid,
       })
+      this.getProjectDetail()
     }
 
     this.getJCLX()
@@ -218,14 +209,7 @@ Page({
       //res就是我们请求接口返回的数据
       console.log(res)
       if (res.repCode == '200') {
-        wx.showToast({
-          title: res.repMsg,
-          complete: setTimeout(function () {
-            wx.navigateBack({
-              delta: 1
-            })
-          }, 1500)
-        })
+        that.postPageData(res)
       } else {
         wx.showToast({
           title: res.repMsg,
@@ -339,6 +323,46 @@ Page({
       wx.showToast({
         title: '加载数据失败',
       })
+    })
+  },
+
+  // 获取项目详情
+  getProjectDetail: function(e) {
+    var that = this
+    var params = {
+      xmid: that.data.xmid
+    }
+    request.requestLoading(config.getProjectDetail, params, '正在加载项目详情', function (res) {
+      //res就是我们请求接口返回的数据
+      console.log(res)
+      if (res.repCode == "200") {
+        that.postPageData(res)
+      }else {
+        wx.showToast({
+          title: '加载数据失败',
+        })
+      }
+    }, function () {
+      wx.showToast({
+        title: '加载数据失败',
+      })
+    })
+  },
+
+  // 设置页面数据和状态
+  postPageData: function(item) {
+    var companyObj = {
+      "name": item.qymc,
+      "id": item.qyid
+    }
+    this.setData({
+      item: item,
+      companyName: companyObj,
+      projectName: item.xmmc,
+      projectNumber: item.xmbh,
+      projectInCharge: item.xmfzr,
+      xmid: item.xmid,
+      xmzt: item.xmzt,
     })
   },
 })

@@ -12,6 +12,10 @@ Page({
     searchName: "",
     type: "",
     repCjwt: [],
+
+    refreshTest: "下拉刷新",
+    loadMoreText: "加载更多",
+    offsetText: 0,
   },
 
   /**
@@ -134,6 +138,24 @@ Page({
     })
     wx.navigateBack({
       delta: backNum
+    })
+  },
+  // scrollerView下拉刷新
+  refreshLoad: function (e) {
+    this.setData({
+      offsetText: e.currentTarget.offsetTop
+    })
+    wx.showToast({
+      title: '下拉刷新ing...',
+      icon: 'none'
+    })
+  },
+
+  // scrollerView上拉加载更多
+  loadMore: function (e) {
+    wx.showToast({
+      title: '上拉加载ing...',
+      icon: 'none'
     })
   },
 })

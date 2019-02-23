@@ -106,7 +106,7 @@ var config = {
   // 获取项目列表
   getProjectList: `${host}/getXx.do?action=getXmlist`,
   // 获取项目详情
-  getProjectDetail: `${host}/getXx.do?action=getOneXm&xmid=`,
+  getProjectDetail: `${host}/getXx.do?action=getOneXm`,
 
   // 获取法规抓取文件
   getGrabLaws: `${host}/getXx.do?action=getFglist`,

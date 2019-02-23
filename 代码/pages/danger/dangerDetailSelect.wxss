@@ -1,15 +1,13 @@
 /* pages/me/me.wxss */
 .baseView {
-  position: fixed;
+  position: absolute;
   height: 100%;
   width: 100%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;/*垂直居中*/
-  justify-content: center;/*水平居中*/
 }
 
 .searchView {
+  position: absolute;
+  top: 0px;
   display:flex;
   flex-direction:row;
   background-color: white;
@@ -45,6 +43,20 @@
   /* margin-bottom: 10px; */
   border-bottom: 1rpx solid #D3D3D3;
   align-items:center;/*垂直居中*/
+}
+
+.scrollerHeader {
+  display:flex;
+  width: 100%;
+  height: 40px;
+  background-color: white;
+  /* margin-bottom: 10px; */
+  border-bottom: 1rpx solid #D3D3D3;
+  flex-direction:column;
+  align-items:center;/*垂直居中*/
+  justify-content: center;/*水平居中*/
+  color: #6F6F6F;
+  font-size: 14px;
 }
 
 .subscrollItem {

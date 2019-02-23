@@ -161,7 +161,7 @@ Page({
     //   url: '../danger/danger4JG?item=' + JSON.stringify(item)
     // })
     wx.navigateTo({
-      url: '../danger/addProject?item=' + JSON.stringify(item)
+      url: '../danger/addProject?xmid=' + item.xmid
     })
   },
 
