@@ -241,3 +241,23 @@
   background-color: #0B6BD9;
   color: white;
 }
+
+.picker {
+  width: 90px;
+  display:flex;
+  flex-direction:row;
+  align-items:center;/*垂直居中*/
+  justify-content: center;/*水平居中*/
+  color: #6F6F6F;
+  font-size: 14px;
+  border-left-width: 1px;
+  border-left-color: #D8D8D8;
+  border-left-style: solid;
+}
+
+.pickerImg {
+  width: 10px;
+  height: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+}

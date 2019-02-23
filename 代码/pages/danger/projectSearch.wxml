@@ -2,6 +2,12 @@
   <view class="searchView">
     <image class="searchIcon" src="../../assets/search.png" mode="widthFix"></image>
     <input class='searchInput' placeholder='请输入项目名称或企业名称' confirm-type='search' bindconfirm="searchProject"></input>
+    <picker mode="region" bindchange="bindRegionChange" value="{{region}}">
+      <view class="picker">
+        <image class='pickerImg' src="../../assets/arrow_down.png"></image>
+        {{currentDistrict == '' ? '区域筛选' : currentDistrict}}
+      </view>
+    </picker>
   </view>
   <scroll-view scroll-y="true" class='scrollView' style="height:{{scrollHeight-40}}px;">
     <block wx:for="{{repXmlist}}" wx:for-item="item" wx:for-index="index">

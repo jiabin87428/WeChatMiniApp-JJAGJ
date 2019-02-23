@@ -15,6 +15,9 @@ Page({
 
     editIndex: 0,
     delBtnWidth: 80,  //删除按钮宽度单位（rpx）m
+    
+    region: ['上海市', '上海市', ''],
+    currentDistrict: "",  // 当前筛选地区
   },
 
   /**
@@ -97,6 +100,7 @@ Page({
     var param = {
       "userid": that.data.userid,
       "searchText": that.data.searchText,
+      "searchQy": that.data.currentDistrict
     }
     //调用接口
     request.requestLoading(config.getProjectList, param, '正在加载数据', function (res) {
@@ -212,5 +216,13 @@ Page({
         repXmlist: list
       });
     }
+  },
+  bindRegionChange(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      region: e.detail.value,
+      currentDistrict: e.detail.value[2]
+    })
+    this.getProjectList()
   }
 })
