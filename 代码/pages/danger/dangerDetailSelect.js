@@ -13,9 +13,12 @@ Page({
     type: "",
     repCjwt: [],
 
-    refreshTest: "下拉刷新",
-    loadMoreText: "加载更多",
-    offsetText: 0,
+    pageNum: 0,
+    pageRows: 15,
+    shouldRefresh: false,
+    refreshText: "下拉刷新",
+    loadMoreText: "上拉加载更多",
+    sfcj: ''  // 是否常见隐患
   },
 
   /**
@@ -34,11 +37,13 @@ Page({
 
     var type = options.type == null ? "" : options.type
     var searchName = options.searchName == null ? "" : options.searchName
+    var sfcj = options.sfcj == null ? "" : options.sfcj
     this.setData({
       type: type,
-      searchName: searchName
+      searchName: searchName,
+      sfcj: sfcj
     })
-    this.getDangerDetails()
+    this.getDangerDetails(true)
   },
 
   /**
@@ -94,21 +99,35 @@ Page({
     this.setData({
       searchName: e.detail.value
     })
-    this.getDangerDetails()
+    this.getDangerDetails(true)
   },
   // 获取隐患详细列表
-  getDangerDetails: function () {
+  getDangerDetails: function (isRefresh) {
     var that = this
     var param = {
+      "pageNum": that.data.pageNum,
+      "pageRows": that.data.pageRows,
       "lb": that.data.type,
-      "searchName": that.data.searchName
+      "searchName": that.data.searchName,
+      "sfcj": that.data.sfcj
     }
+    console.log(that.data.pageNum)
     //调用接口
     request.requestLoading(config.getDangerType, param, '正在加载数据', function (res) {
-      console.log(res)
-      if (res.repCjwt != null) {
+      // console.log(res)
+      if (isRefresh == true) {
         that.setData({
-          repCjwt: res.repCjwt
+          repCjwt: []
+        })
+      }
+      if (res.repCjwt != null) {
+        var datas = that.data.repCjwt
+        datas = datas.concat(res.repCjwt)
+        var num = that.data.pageNum
+        num += 1
+        that.setData({
+          repCjwt: datas,
+          pageNum: num
         })
       }
     }, function () {
@@ -142,20 +161,35 @@ Page({
   },
   // scrollerView下拉刷新
   refreshLoad: function (e) {
-    this.setData({
-      offsetText: e.currentTarget.offsetTop
-    })
-    wx.showToast({
-      title: '下拉刷新ing...',
-      icon: 'none'
-    })
+
+    // this.getDangerDetails(true)
   },
 
   // scrollerView上拉加载更多
-  loadMore: function (e) {
-    wx.showToast({
-      title: '上拉加载ing...',
-      icon: 'none'
-    })
+  loadMoreLoad: function (e) {
+    this.getDangerDetails(false)
+  },
+
+  // scrollview正在滚动
+  isScrolling: function (e) {
+    console.log(e)
+    if (e.detail.scrollTop <= -50) {
+      this.setData({
+        refreshText: '松开刷新',
+        shouldRefresh: true,
+      })
+    }else {
+      this.setData({
+        refreshText: '下拉刷新',
+        shouldRefresh: false,
+      })
+    }
+  },
+
+  // scrollview触摸结束
+  scrollTouchEnd: function(e) {
+    if (this.data.shouldRefresh == true) {
+      this.getDangerDetails(true)
+    }
   },
 })

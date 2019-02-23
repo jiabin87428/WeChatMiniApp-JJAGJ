@@ -264,7 +264,7 @@ Page({
     var viewId = e.currentTarget.id
     var that = this
     wx.showActionSheet({
-      itemList: viewId == "clause" ? ['从隐患库选择', '自行输入问题', '从隐患库检索', '从法规库选择'] : ['从隐患库选择', '自行输入问题', '从隐患库检索', '从常用隐患库选择', '按隐患使用频率选择'],
+      itemList: viewId == "clause" ? ['从隐患库选择', '自行输入问题', '从隐患库检索', '从法规库选择'] : ['从隐患库选择', '自行输入问题', '从隐患库检索', '从常用隐患库选择'],
       success: function (res) {
         if (res.tapIndex == 0) {// 从模板选择
           wx.navigateTo({
@@ -284,11 +284,7 @@ Page({
           }else {
             if (res.tapIndex == 3) {// 从常用隐患库选择
               wx.navigateTo({
-                url: '../danger/dangerDetailSelect'
-              })
-            } else if (res.tapIndex == 4) {// 按隐患使用频率选择
-              wx.navigateTo({
-                url: '../danger/dangerDetailSelect'
+                url: '../danger/dangerDetailSelect?sfcj=是'
               })
             }
           }
