@@ -129,6 +129,13 @@ var config = {
   // 企业编辑，新建账号
   createAccount: `${host}/getXx.do?action=register`,
 
+  // 获取隐患分类统计
+  getYhfltj: `${host}/getXx.do?action=getYhfltj`,
+  // 获取隐患级别统计
+  getYhjbtj: `${host}/getXx.do?action=getYhjbtj`,
+  // 获取企业隐患的排名统计
+  getYhpm: `${host}/getXx.do?action=getYhpm`,
+
   // 获取检查类型
   getJclx: `${host}/getXx.do?action=getJclx`,
 

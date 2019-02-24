@@ -80,6 +80,12 @@ Page({
       url: '../danger/projectList?userid=' + app.globalData.userInfo.userid
     })
   },
+  // 点击查看隐患统计
+  yhTongjiClick: function (e) {
+    wx.navigateTo({
+      url: '../danger/dangerStatistics?userid=' + app.globalData.userInfo.userid
+    })
+  },
   // 判断是否登录
   checkLogin: function () {
     var that = this

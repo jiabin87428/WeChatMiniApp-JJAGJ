@@ -48,7 +48,8 @@
     "pages/me/companyReportList",
     "pages/index/fliter",
     "pages/me/companyAccounts",
-    "pages/me/addCompanyAccount"
+    "pages/me/addCompanyAccount",
+    "pages/danger/dangerStatistics"
   ],
   "window": {
     "backgroundTextStyle": "light",

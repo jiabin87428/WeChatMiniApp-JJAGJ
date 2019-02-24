@@ -39,6 +39,13 @@
           <text class='subText'>对企业进行地毯式排查</text>
         </view>
       </view>
+      <view class='dangerView' bindtap='yhTongjiClick'>
+        <image class="dangerIcon" src="../../assets/tongji.png" mode="widthFix"></image>
+        <view class='subView'>
+          <text class='dangerText'>隐患统计</text>
+          <text class='subText'>隐患分类、隐患级别、企业隐患的排名</text>
+        </view>
+      </view>
     </view>
 
     <!-- 监管（原政府） -->
