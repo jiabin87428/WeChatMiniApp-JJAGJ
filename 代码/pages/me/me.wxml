@@ -72,6 +72,11 @@
       <text class='cellText2'></text>
       <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image>
     </view>
+    <view id='companyManager' class='scrollItem' wx:if="{{yhlx != '0'}}" bindtap='dangerCountClick'>
+      <text class='cellText1'>隐患统计</text>
+      <text class='cellText2'></text>
+      <image class="arrow" src="../../assets/arrowRight.png" mode="aspectFit"></image>
+    </view>
     <!-- <view>
       <button class='submitButton' bindtap="loginOut">退出登录</button>
     </view> -->

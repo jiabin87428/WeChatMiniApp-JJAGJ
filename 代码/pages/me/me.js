@@ -220,4 +220,10 @@ Page({
       url: '../me/companyList?userid=' + app.globalData.userInfo.userid
     })
   },
+  // 查看隐患统计
+  dangerCountClick: function (e) {
+    wx.navigateTo({
+      url: '../danger/dangerStatistics?userid=' + app.globalData.userInfo.userid
+    })
+  },
 })
