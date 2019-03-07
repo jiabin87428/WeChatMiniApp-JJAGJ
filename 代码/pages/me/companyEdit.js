@@ -39,7 +39,11 @@ Page({
     baseAndSaftyObj: {},
 
     // 账号列表
-    zhlist: []
+    zhlist: [],
+
+    // 组织机构id
+    orgid: "",
+    orgname: "",
   },
 
   /**
@@ -244,6 +248,8 @@ Page({
       "city": that.data.city,
       "district": that.data.district,
       "fxdj": that.data.fxdj,
+      "qysdid": that.data.orgid,
+      "qysdmc": that.data.orgname,
     }
     request.requestLoading(config.editCompany, params, '正在加载数据', function (res) {
       //res就是我们请求接口返回的数据
@@ -317,6 +323,13 @@ Page({
 
     wx.navigateTo({
       url: '../me/companyAccounts?qyid=' + this.data.qyid + '&zhlist=' + JSON.stringify(this.data.zhlist)
+    })
+  },
+
+  // 跳转组织机构筛选
+  jumpOrgChoose: function (e) {
+    wx.navigateTo({
+      url: '../index/fliter'
     })
   },
 })

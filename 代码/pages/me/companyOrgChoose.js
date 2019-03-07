@@ -12,7 +12,6 @@ Page({
     searchName: "",
     companyList: [],
     orgid: "",
-    orgname: "",
     // 需要返回的级数
     backPageNum: 1,
   },
@@ -23,22 +22,16 @@ Page({
   onLoad: function (options) {
     var that = this
     var orgid = options.orgid
-    var orgname = options.name
     var backNum = options.backNum
-    if (backNum != null) {
+    if (orgid != null) {
       var newNum = that.data.backPageNum + parseInt(backNum)
       that.setData({
         backPageNum: newNum
       })
     }
-    if (orgid != null) {
+    if (backNum != null) {
       that.setData({
         orgid: orgid
-      })
-    }
-    if (orgname != null) {
-      that.setData({
-        orgname: orgname
       })
     }
     wx.getSystemInfo({
@@ -125,8 +118,7 @@ Page({
         {
           "hasChild": "N",
           "id": that.data.orgid,
-          "name": "全部",
-          "showname": that.data.orgname
+          "name": "全部"
         }
       ]
       that.setData({
@@ -139,21 +131,15 @@ Page({
   selectItem: function (e) {
     var that = this
     var item = e.currentTarget.dataset.item
-    var showname = item.name == '全部' ? item.showname : item.name
-    that.setData({
-      orgid: item.id,
-      orgname: showname
-    })
     if (item.hasChild == "Y") {
       wx.navigateTo({
-        url: '../index/fliter?orgid=' + item.id + '&name=' + item.name + '&backNum=' + that.data.backPageNum
+        url: '../index/fliter?orgid=' + item.id + '&backNum=' + that.data.backPageNum
       })
     } else {
       var pages = getCurrentPages()
       var indexPage = pages[pages.length - that.data.backPageNum - 1]
       indexPage.setData({
-        orgid: that.data.orgid,
-        orgname: that.data.orgname
+        orgid: that.data.orgid
       })
       wx.navigateBack({
         delta: that.data.backPageNum
