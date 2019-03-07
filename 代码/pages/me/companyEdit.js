@@ -73,7 +73,9 @@ Page({
         city: item.city,
         district: item.district,
         fxdj: item.fxdj,
-        zhlist: item.zhlist
+        zhlist: item.zhlist,
+        orgid: item.qysdid,
+        orgname: item.qysdmc
       })
       var level = ""
       if (item.fxdj == 'A(红色)') {
